@@ -8,7 +8,7 @@ interface Props {
 
 const IconText: React.FC<Props> = ({ icon, text }) => {
   return (
-    <div className="flex flex-col items-center space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
+    <div className="flex flex-col items-center cursor-pointer space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
       <div className="relative">
         <Icon icon={icon} className="!text-primaryOne !text-xl" />
         {text === "Cart" && (

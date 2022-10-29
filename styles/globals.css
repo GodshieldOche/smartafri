@@ -9,6 +9,10 @@
   height: 0px;
 }
 
+.tinyborder {
+  border: -2px solid #b0babf;
+}
+
 .scrollerMain::-webkit-scrollbar {
   width: 6px !important;
 }
@@ -32,4 +36,8 @@
 
 .secondaryThree {
   @apply text-secondaryThree text-sm lg:text-base opacity-50;
+}
+
+.headingOne {
+  @apply text-base lg:text-lg xl:text-xl font-semibold text-black;
 }
