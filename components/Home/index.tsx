@@ -19,19 +19,18 @@ const Home = () => {
   return (
     <div className=" my-6 lg:mt-[80px] space-y-8 xl:space-y-10">
       {/* Slide Show */}
-      <div className="contain w-full h-full relative max-w-[1200px] mx-auto">
-        <CarouselProvider
-          infinite
-          naturalSlideWidth={100}
-          naturalSlideHeight={38}
-          totalSlides={3}
-          className="lg:px-12"
-          interval={4000}
-          isPlaying
-        >
-          <Carousel />
-        </CarouselProvider>
-      </div>
+
+      <CarouselProvider
+        infinite
+        naturalSlideWidth={100}
+        naturalSlideHeight={35}
+        totalSlides={3}
+        className="contain"
+        interval={4000}
+        isPlaying
+      >
+        <Carousel />
+      </CarouselProvider>
 
       {/*Top Categories */}
       <div className="contain">

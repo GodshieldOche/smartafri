@@ -23,6 +23,9 @@ const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(
     carouselContext.state.currentSlide
   );
+  const [active, setActive] = useState(false);
+  const [activeRight, setActiveRight] = useState(false);
+
   useEffect(() => {
     function onChange() {
       setCurrentSlide(carouselContext.state.currentSlide);
@@ -33,24 +36,40 @@ const Carousel = () => {
 
   return (
     <>
-      <Slider className="bg-white">
-        {array.map((item, index) => (
-          <Slide key={index} index={index}>
-            <Image src={item} fill priority alt="slide1" />
-          </Slide>
-        ))}
-      </Slider>
-      <div className="hidden lg:block absolute top-[50%] left-4 ">
-        <ButtonBack>
-          <SlideButton icon="bi:arrow-left-short" />
-        </ButtonBack>
+      <div className="relative max-w-[1000px] mx-auto">
+        <Slider className="bg-white max-w-[1000px] mx-auto">
+          {array.map((item, index) => (
+            <Slide key={index} index={index}>
+              <div className="w-full relative h-full max-w-[1000px]">
+                <Image src={item} fill priority alt="slide1" />
+              </div>
+            </Slide>
+          ))}
+        </Slider>
+        <div
+          onMouseOver={() => setActive(true)}
+          onMouseOut={() => setActive(false)}
+          className={` ${
+            active ? "opacity-100" : "opacity-0"
+          } hidden absolute top-0 bottom-0  left-0 lg:flex flex-col items-center justify-center p-3 h-full `}
+        >
+          <ButtonBack>
+            <SlideButton icon="bi:arrow-left-short" />
+          </ButtonBack>
+        </div>
+        <div
+          onMouseOver={() => setActiveRight(true)}
+          onMouseOut={() => setActiveRight(false)}
+          className={` ${
+            activeRight ? "opacity-100" : "opacity-0"
+          } hidden absolute top-0 bottom-0 right-0 lg:flex flex-col items-center justify-center p-3 h-full  `}
+        >
+          <ButtonNext>
+            <SlideButton icon="bi:arrow-right-short" />
+          </ButtonNext>
+        </div>
       </div>
-      <div className="hidden lg:block absolute top-[50%] right-4 ">
-        <ButtonNext>
-          <SlideButton icon="bi:arrow-right-short" />
-        </ButtonNext>
-      </div>
-      <div className="space-x-3 w-full flex lg:hidden mt-2 justify-center items-center">
+      <div className="space-x-3 w-full flex  mt-2 justify-center items-center">
         {array.map((item, index) => (
           <Dot
             className={`w-4 h-1 ${
