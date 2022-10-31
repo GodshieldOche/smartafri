@@ -36,11 +36,11 @@ const Carousel = () => {
 
   return (
     <>
-      <div className="relative max-w-[1000px] mx-auto">
-        <Slider className="bg-white max-w-[1000px] mx-auto">
+      <div className="relative w-full  lg:px-6">
+        <Slider className="bg-white w-full mx-auto">
           {array.map((item, index) => (
             <Slide key={index} index={index}>
-              <div className="w-full relative h-full max-w-[1000px]">
+              <div className="w-full relative h-full">
                 <Image src={item} fill priority alt="slide1" />
               </div>
             </Slide>

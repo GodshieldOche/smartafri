@@ -27,7 +27,7 @@
 }
 
 .contain {
-  @apply container mx-auto px-[19px];
+  @apply container mx-auto px-[20px];
 }
 
 .input {

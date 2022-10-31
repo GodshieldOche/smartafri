@@ -5,7 +5,7 @@ import Image from "next/image";
 const ProductCard = () => {
   return (
     <div className="flex flex-col bg-white rounded-[10px] w-fit tinyborder shadow-sm !my-2 ">
-      <div className=" w-[200px] h-[150px] lg:w-[280px] lg:h-[216px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[10px] ">
+      <div className=" w-[210px] h-[150px] lg:w-[280px] lg:h-[216px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[10px] ">
         <div className=" w-[80px] h-[80px] lg:w-[145px] lg:h-[145px] relative">
           <Image
             src={
