@@ -51,7 +51,7 @@ const Carousel = () => {
           onMouseOut={() => setActive(false)}
           className={` ${
             active ? "opacity-100" : "opacity-0"
-          } hidden absolute top-0 bottom-0  left-0 lg:flex flex-col items-center justify-center ml-6 p-3 h-full `}
+          } hidden absolute top-0 bottom-0  left-0 lg:flex flex-col items-center justify-center ml-6 p-3 pr-40 h-full `}
         >
           <ButtonBack>
             <SlideButton icon="bi:arrow-left-short" />
@@ -62,7 +62,7 @@ const Carousel = () => {
           onMouseOut={() => setActiveRight(false)}
           className={` ${
             activeRight ? "opacity-100" : "opacity-0"
-          } hidden absolute top-0 bottom-0 right-0 lg:flex flex-col items-center justify-center mr-6 p-3 h-full  `}
+          } hidden absolute top-0 bottom-0 right-0 lg:flex flex-col items-center justify-center mr-6 p-3 pl-40 h-full  `}
         >
           <ButtonNext>
             <SlideButton icon="bi:arrow-right-short" />

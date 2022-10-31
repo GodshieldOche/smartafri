@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CarouselProvider } from "pure-react-carousel";
 import React from "react";
 import Brand from "../Common/Brand";
@@ -36,7 +37,13 @@ const Home = () => {
 
       {/*Top Categories */}
       <div className="contain space-y-5">
-        <h1 className="headingOne">Top Categories</h1>
+        <div className="flex justify-between">
+          <h1 className="headingOne">Top Categories</h1>
+          <Link href="">
+            <h2 className="text-grayOne text-[13px] lg:text-base ">See All</h2>
+          </Link>
+        </div>
+
         <div className="w-full flex items-center justify-between space-x-3 overflow-x-auto scroller">
           {categories.map((item, index) => (
             <Category icon={item.icon} text={item.text} key={index} />
@@ -80,7 +87,12 @@ const Home = () => {
 
       {/* Top Brands */}
       <div className="sm:container mx-auto sm:px-[20px] space-y-5">
-        <h1 className="headingOne text-center">Top Brands</h1>
+        <div className="flex justify-between px-[20px] sm:px-0">
+          <h1 className="headingOne">Top Brand</h1>
+          <Link href="">
+            <h2 className="text-grayOne text-[13px] lg:text-base ">See All</h2>
+          </Link>
+        </div>
         <div className="w-full h-full relative p-6 bg-grayThree">
           <div className="grid gap-y-5 gap-x-4 grid-cols-2 md:grid-cols-4">
             <Brand />

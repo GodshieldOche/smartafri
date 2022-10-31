@@ -48,6 +48,9 @@ const Header = () => {
       <div className="w-full overflow-hidden bg-primaryOne">
         {/* Desktop */}
         <div className="contain w-full hidden lg:flex items-center justify-between py-4">
+          <h2 className="text-[13px] !font-Poppins !font-medium tracking-wide text-grayThree capitalize">
+            All Categories
+          </h2>
           <div className="flex items-center space-x-9 ">
             {array.map((item, index) => (
               <h2
