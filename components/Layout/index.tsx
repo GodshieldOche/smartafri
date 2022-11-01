@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
@@ -8,11 +9,12 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children }) => {
+  const router = useRouter();
   return (
     <div className="font-Poppins bg-white w-full !h-full ">
       <Header />
       <div className="min-h-screen mt-[78px] lg:mt-[84px]">
-        <Subheader />
+        {router.pathname === "/" && <Subheader />}
         {children}
       </div>
       <Footer />

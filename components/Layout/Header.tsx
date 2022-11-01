@@ -7,6 +7,7 @@ import IconText from "../Common/IconText";
 import SearchInput from "../Common/SearchInput";
 import { Icon } from "@iconify/react";
 import Dropdown from "../Common/Dropdown";
+import { useRouter } from "next/router";
 
 const array = [
   "Best Sellers",
@@ -15,11 +16,11 @@ const array = [
   "Computers",
   "Fashion",
   "Health",
-  "Pharmacy",
   "Toys & Games",
 ];
 
 const Header = () => {
+  const router = useRouter();
   return (
     <div className="fixed top-0 right-0 left-0 w-full !z-50 bg-grayThree cursor-pointer ">
       {/* Desktop */}
@@ -45,28 +46,31 @@ const Header = () => {
           <Button text="Log In" />
         </div>
       </div>
-      <div className="w-full overflow-hidden bg-primaryOne">
-        {/* Desktop */}
-        <div className="contain w-full hidden lg:flex items-center justify-between py-4">
-          <h2 className="text-[13px] !font-Poppins !font-medium tracking-wide text-grayThree capitalize">
-            All Categories
-          </h2>
-          <div className="flex items-center space-x-9 ">
-            {array.map((item, index) => (
-              <h2
-                key={index}
-                className="text-[13px] !font-Poppins !font-light tracking-wide text-grayThree capitalize"
-              >
-                {item}
-              </h2>
-            ))}
-          </div>
-          <div className="flex items-center space-x-6 ">
-            <Dropdown text="NGN" />
-            <Dropdown text="ENG" />
+
+      {router.pathname === "/" && (
+        <div className="w-full overflow-hidden bg-primaryOne">
+          {/* Desktop */}
+          <div className="contain w-full hidden lg:flex items-center justify-between py-4">
+            <h2 className="text-[13px] !font-Poppins !font-medium tracking-wide text-grayThree capitalize">
+              All Categories
+            </h2>
+            <div className="flex items-center space-x-9 ">
+              {array.map((item, index) => (
+                <h2
+                  key={index}
+                  className="text-[13px] !font-Poppins !font-light tracking-wide text-grayThree capitalize"
+                >
+                  {item}
+                </h2>
+              ))}
+            </div>
+            <div className="flex items-center space-x-6 ">
+              <Dropdown text="NGN" />
+              <Dropdown text="ENG" />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Mobile */}
       <div className="contain w-full flex  items-center justify-between lg:hidden py-6 ">
