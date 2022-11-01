@@ -9,7 +9,7 @@ const images = [1, 2, 3];
 const Product = () => {
   const [active, setActive] = useState<string>("description");
   return (
-    <div className=" mt-24 lg:mt-8 contain space-y-8">
+    <div className=" lg:!mt-[120px] contain space-y-8">
       {/* <h1>//BreadCurmbs</h1> */}
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-10 ">
         <div className="col-span-12 lg:col-span-7">

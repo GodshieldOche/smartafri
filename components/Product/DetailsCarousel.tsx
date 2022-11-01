@@ -34,7 +34,7 @@ const DetailsCarousel: React.FC<{ images: number[] }> = ({ images }) => {
           ))}
         </Slider>
       </div>
-      <div className="col-span-12 lg:col-span-3 lg:pr-5 space-x-3 lg:space-x-0 lg:space-y-2 justify-center  flex flex-row lg:flex-col text-white">
+      <div className="col-span-12 lg:col-span-3 lg:pr-5 space-x-3 lg:space-x-0 lg:space-y-2 flex flex-row lg:flex-col text-white">
         {images.map((item, index) => (
           <Dot
             key={index}
