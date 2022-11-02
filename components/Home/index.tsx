@@ -4,6 +4,7 @@ import React from "react";
 import Brand from "../Common/Brand";
 import Category from "../Common/Category";
 import Section from "../Common/Section";
+import Products from "../Products";
 import Carousel from "./Carousel";
 import ProductCarousel from "./ProductCarousel";
 
@@ -52,10 +53,7 @@ const Home = () => {
       </div>
 
       {/*Top Selling Items */}
-      <div className="sm:container mx-auto sm:px-[20px] space-y-5">
-        <h1 className="headingOne px-[20px] sm:px-0">Top Selling Items</h1>
-        <ProductCarousel products={products} />
-      </div>
+      <Products products={products} title="Top Selling Items" />
 
       {/* Sections */}
       <div className="bg-grayThree !mt-6 py-10">
@@ -108,10 +106,7 @@ const Home = () => {
       </div>
 
       {/* Recently Viewd Item */}
-      <div className="sm:container mx-auto sm:px-[20px] space-y-5">
-        <h1 className="headingOne px-[20px] sm:px-0">Recently Viewed items</h1>
-        <ProductCarousel products={products} />
-      </div>
+      <Products products={products} title="Recently Viewed items" />
     </div>
   );
 };

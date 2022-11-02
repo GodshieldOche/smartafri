@@ -22,11 +22,18 @@ const array = [
 const Header = () => {
   const router = useRouter();
   return (
-    <div className="fixed top-0 right-0 left-0 w-full !z-50 bg-grayThree cursor-pointer ">
+    <div className="fixed top-0 right-0 left-0 w-full !z-50 bg-grayThree ">
       {/* Desktop */}
       <div className="contain w-full hidden lg:grid grid-cols-12 items-center gap-10  py-6">
         <div className="col-span-2">
-          <Image src={logo} width={174} height={17} alt="logo" />
+          <Image
+            onClick={() => router.push("/")}
+            className="cursor-pointer"
+            src={logo}
+            width={174}
+            height={17}
+            alt="logo"
+          />
         </div>
 
         <div className="col-span-5 w-full">
@@ -80,7 +87,12 @@ const Header = () => {
             className="!text-[32px] !text-grayOne"
           />
           <div>
-            <Image src={logoMobile} alt="logo" />
+            <Image
+              onClick={() => router.push("/")}
+              className="cursor-pointer"
+              src={logoMobile}
+              alt="logo"
+            />
           </div>
         </div>
         <Icon

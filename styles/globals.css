@@ -41,3 +41,11 @@
 .headingOne {
   @apply text-base lg:text-lg xl:text-xl font-semibold text-black;
 }
+
+.paragraph {
+  @apply text-sm lg:text-base leading-[26px] lg:leading-8;
+}
+
+.spec {
+  @apply text-black font-light text-sm lg:text-base;
+}

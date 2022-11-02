@@ -13,7 +13,7 @@ const Brand = () => {
           />
         </div>
       </div>
-      <h1 className=" font-semibold text-sm lg:text-lg text-primaryOne  ">
+      <h1 className=" font-medium text-sm lg:text-lg text-primaryOne  ">
         Addidas
       </h1>
     </div>
