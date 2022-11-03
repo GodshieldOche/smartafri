@@ -74,7 +74,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
-        <div className="col-span-12 lg:col-span-9 space-y-6 md:p-4 bg-grayThree">
+        <div className="col-span-12 lg:col-span-9 space-y-6 py-4 md:p-4  bg-grayThree">
           {/* description */}
           <div className="flex-col space-y-4 w-full max-w-[638px]">
             <h1 className="text-base lg:text-lg xl:text-[22px] capitalize font-semibold text-primaryOne ">

@@ -21,7 +21,7 @@ const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Home = () => {
   return (
-    <div className=" my-6 lg:mt-[60px] space-y-8 xl:space-y-10">
+    <div className=" my-6 lg:mt-[70px] space-y-8 xl:space-y-10">
       {/* Slide Show */}
 
       <CarouselProvider
