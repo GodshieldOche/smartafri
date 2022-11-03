@@ -17,7 +17,7 @@ const Brand: React.FC<Props> = ({ brand }) => {
       href={`/brands/${brand}`}
       className={` ${
         id ? "border space-x-2" : "border-0 space-x-4 lg:space-x-6"
-      } w-full p-2 lg:p-4 flex items-center   bg-white rounded-[10px] `}
+      } w-full p-2 pr-5 lg:p-4 flex items-center   bg-white rounded-[10px] `}
     >
       <div className=" flex items-center justify-center rounded-full bg-[#F1F1F1] p-2 w-[35px] h-[35px]  lg:w-[40px] lg:h-[40px] ">
         <div className="relative w-full h-full rounded-full">

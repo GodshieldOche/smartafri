@@ -11,7 +11,7 @@ const ProductCardTwo = () => {
       <div
         onMouseOver={() => setShowAddToCart(true)}
         onMouseOut={() => setShowAddToCart(false)}
-        className=" relative w-full h-[125px] sm:h-[150px] lg:h-[210px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[6px] lg:rounded-t-[10px] "
+        className=" relative w-full h-[150px] lg:h-[210px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[6px] lg:rounded-t-[10px] "
       >
         <div className=" w-[80px] h-[80px] lg:w-[145px] lg:h-[145px] relative">
           <Image
@@ -28,10 +28,10 @@ const ProductCardTwo = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col !my-4 lg:!my-6 px-4 space-y-2 lg:space-y-3">
+      <div className="flex flex-col !my-4 lg:!my-6 px-4 space-y-3">
         <Link href={`/products/1`}>
           <h1 className="text-xs lg:text-base font-medium text-black">
-            MAM Feed & Soothe Essenti...
+            MAM Feed & Soothe...
           </h1>
         </Link>
         <h1 className="text-primaryOne  text-sm lg:text-xl font-[700]  ">
