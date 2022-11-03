@@ -19,7 +19,7 @@ const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const Product = () => {
   const [active, setActive] = useState<string>("description");
   return (
-    <div className=" lg:!mt-[120px]  space-y-8">
+    <div className="body">
       {/* <h1>//BreadCurmbs</h1> */}
       <div className="contain grid grid-cols-12 gap-y-10 lg:gap-x-10 ">
         <div className="col-span-12 lg:col-span-7">

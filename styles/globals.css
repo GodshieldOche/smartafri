@@ -27,7 +27,7 @@
 }
 
 .contain {
-  @apply container mx-auto px-4 lg:px-5;
+  @apply container mx-auto px-4 sm:px-10;
 }
 
 .input {
@@ -48,4 +48,8 @@
 
 .spec {
   @apply text-black font-light text-sm lg:text-base;
+}
+
+.body {
+  @apply !mt-[100px] lg:!mt-[120px]  space-y-8;
 }

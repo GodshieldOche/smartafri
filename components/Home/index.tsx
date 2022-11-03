@@ -9,25 +9,25 @@ import Carousel from "./Carousel";
 import ProductCarousel from "./ProductCarousel";
 
 const categories = [
-  { icon: "ic:baseline-agriculture", text: "Agriculture" },
-  { icon: "healthicons:electricity", text: "Electronics" },
-  { icon: "wpf:books", text: "Books" },
-  { icon: "maki:jewelry-store", text: "Accessories" },
-  { icon: "fluent:food-apple-20-filled", text: "Groceries" },
-  { icon: "ic:baseline-fitness-center", text: "Fitness" },
+  { icon: "ic:baseline-agriculture", text: "agriculture" },
+  { icon: "healthicons:electricity", text: "electronics" },
+  { icon: "wpf:books", text: "books" },
+  { icon: "maki:jewelry-store", text: "accessories" },
+  { icon: "fluent:food-apple-20-filled", text: "groceries" },
+  { icon: "ic:baseline-fitness-center", text: "fitness" },
 ];
 
 const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Home = () => {
   return (
-    <div className=" my-6 lg:mt-[80px] space-y-8 xl:space-y-10">
+    <div className=" my-6 lg:mt-[60px] space-y-8 xl:space-y-10">
       {/* Slide Show */}
 
       <CarouselProvider
         infinite
         naturalSlideWidth={100}
-        naturalSlideHeight={35}
+        naturalSlideHeight={31}
         totalSlides={3}
         className="contain"
         interval={4000}
@@ -40,7 +40,7 @@ const Home = () => {
       <div className="contain space-y-5">
         <div className="flex justify-between">
           <h1 className="headingOne">Top Categories</h1>
-          <Link href="">
+          <Link href="/agriculture">
             <h2 className="text-grayOne text-[13px] lg:text-base ">See All</h2>
           </Link>
         </div>
@@ -84,7 +84,7 @@ const Home = () => {
       </div>
 
       {/* Top Brands */}
-      <div className="sm:container mx-auto sm:px-[20px] space-y-5">
+      <div className="sm:container mx-auto sm:px-10 space-y-5">
         <div className="flex justify-between px-[20px] sm:px-0">
           <h1 className="headingOne">Top Brand</h1>
           <Link href="">
@@ -93,14 +93,14 @@ const Home = () => {
         </div>
         <div className="w-full h-full relative p-6 bg-grayThree">
           <div className="grid gap-y-5 gap-x-4 grid-cols-2 md:grid-cols-4">
-            <Brand />
-            <Brand />
-            <Brand />
-            <Brand />
-            <Brand />
-            <Brand />
-            <Brand />
-            <Brand />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
+            <Brand brand="adiddas" />
           </div>
         </div>
       </div>

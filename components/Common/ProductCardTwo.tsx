@@ -1,18 +1,17 @@
-import React, { useState } from "react";
-import { Icon } from "@iconify/react";
 import Image from "next/image";
 import Link from "next/link";
+import React, { useState } from "react";
 import Rating from "./Rating";
 
-const ProductCard = () => {
+const ProductCardTwo = () => {
   const [showAddToCart, setShowAddToCart] = useState(false);
 
   return (
-    <div className="flex flex-col bg-white rounded-[10px] w-fit lg:hover:shadow-md shadow-sm border-[#b0babf]/20 !my-2 ">
+    <div className="flex flex-col bg-white rounded-[6px] lg:rounded-[10px] w-fit lg:hover:shadow-md shadow-sm border-[#b0babf]/20 !my-2 ">
       <div
         onMouseOver={() => setShowAddToCart(true)}
         onMouseOut={() => setShowAddToCart(false)}
-        className=" relative w-[205px] h-[150px] lg:w-[275px] lg:h-[210px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[10px] "
+        className=" relative w-[170px] h-[125px]  sm:w-[205px] sm:h-[150px]  lg:w-[275px] lg:h-[210px] flex items-center justify-center bg-[#F1F1F1] rounded-t-[6px] lg:rounded-t-[10px] "
       >
         <div className=" w-[80px] h-[80px] lg:w-[145px] lg:h-[145px] relative">
           <Image
@@ -29,13 +28,13 @@ const ProductCard = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col !my-6 px-4 space-y-3">
+      <div className="flex flex-col !my-4 lg:!my-6 px-4 space-y-2 lg:space-y-3">
         <Link href={`/products/1`}>
           <h1 className="text-xs lg:text-base font-medium text-black">
-            MAM Feed & Soothe Essenti...
+            MAM Feed & Soothe...
           </h1>
         </Link>
-        <h1 className="text-primaryOne  text-base lg:text-xl font-[700]  ">
+        <h1 className="text-primaryOne  text-sm lg:text-xl font-[700]  ">
           ₦20,000
         </h1>
         <Rating />
@@ -44,4 +43,4 @@ const ProductCard = () => {
   );
 };
 
-export default ProductCard;
+export default ProductCardTwo;
