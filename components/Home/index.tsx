@@ -27,7 +27,7 @@ const Home = () => {
       <CarouselProvider
         infinite
         naturalSlideWidth={100}
-        naturalSlideHeight={31}
+        naturalSlideHeight={32}
         totalSlides={3}
         className="contain"
         interval={4000}

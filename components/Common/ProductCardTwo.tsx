@@ -7,7 +7,7 @@ const ProductCardTwo = () => {
   const [showAddToCart, setShowAddToCart] = useState(false);
 
   return (
-    <div className="flex flex-col bg-white rounded-[6px] lg:rounded-[10px] w-full lg:hover:shadow-md shadow-sm border-[#b0babf]/20  ">
+    <div className="flex flex-col bg-white rounded-[6px] lg:rounded-[10px] w-full shadow-sm border-[#b0babf]/20  ">
       <div
         onMouseOver={() => setShowAddToCart(true)}
         onMouseOut={() => setShowAddToCart(false)}
