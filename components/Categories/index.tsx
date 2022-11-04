@@ -52,7 +52,7 @@ const Categories = () => {
           ))}
         </div>
       </div>
-      <div className="sm:container mx-auto sm:px-10 space-y-5 grid gap-x-5 grid-cols-12">
+      <div className="sm:container mx-auto sm:px-10 grid gap-x-5 grid-cols-12">
         <div className="hidden lg:block col-span-3 w-full h-fit bg-grayThree py-6 px-3 space-y-6 ">
           {cates.map((item, index) => (
             <div key={index} className="flex items-center space-x-2">
@@ -74,7 +74,7 @@ const Categories = () => {
             </div>
           ))}
         </div>
-        <div className="col-span-12 lg:col-span-9 space-y-6 p-4  bg-grayThree">
+        <div className="col-span-12 lg:col-span-9 px-4 sm:px-0 space-y-6 ">
           {/* description */}
           <div className="flex-col space-y-4 w-full max-w-[638px]">
             <h1 className="text-base lg:text-lg xl:text-[22px] capitalize font-semibold text-primaryOne ">
