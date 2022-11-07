@@ -36,8 +36,8 @@ const Carousel = () => {
 
   return (
     <>
-      <div className="relative w-full  lg:px-6">
-        <Slider className="bg-white w-full max-w-[1159px] mx-auto">
+      <div className="relative w-full max-w-[1159px] mx-auto  lg:px-6">
+        <Slider className="bg-white w-full">
           {array.map((item, index) => (
             <Slide key={index} index={index}>
               <div className="w-full h-[132px] sm:h-[250px]  lg:h-[410px] relative">
