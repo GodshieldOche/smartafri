@@ -21,7 +21,7 @@ const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Home = () => {
   return (
-    <div className=" my-6 lg:mt-[70px] space-y-8 xl:space-y-10">
+    <div className=" my-6 lg:mt-[65px] space-y-8 xl:space-y-10">
       {/* Slide Show */}
 
       <CarouselProvider
@@ -31,6 +31,7 @@ const Home = () => {
         totalSlides={3}
         className="contain"
         interval={4000}
+        isIntrinsicHeight
         isPlaying
       >
         <Carousel />
@@ -45,7 +46,7 @@ const Home = () => {
           </Link>
         </div>
 
-        <div className="w-full flex items-center justify-between space-x-3 overflow-x-auto scroller">
+        <div className="w-full flex items-center justify-between space-x-2 lg:space-x-3 overflow-x-auto scroller">
           {categories.map((item, index) => (
             <Category icon={item.icon} text={item.text} key={index} />
           ))}

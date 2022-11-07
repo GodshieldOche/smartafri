@@ -13,9 +13,9 @@ import { Icon } from "@iconify/react";
 import SlideButton from "../Common/SlideButton";
 
 const array = [
+  "https://res.cloudinary.com/drck33djn/image/upload/v1667805764/smartafri-1-e1667488401909_qilhm1.png",
   "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1666964647/SmartAfri/image_14_yptkll.png",
-  "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1666964647/SmartAfri/image_14_yptkll.png",
-  "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1666964647/SmartAfri/image_14_yptkll.png",
+  "https://res.cloudinary.com/drck33djn/image/upload/v1667805764/smartafri-1-e1667488401909_qilhm1.png",
 ];
 
 const Carousel = () => {
@@ -37,10 +37,10 @@ const Carousel = () => {
   return (
     <>
       <div className="relative w-full  lg:px-6">
-        <Slider className="bg-white w-full mx-auto">
+        <Slider className="bg-white w-full max-w-[1159px] mx-auto">
           {array.map((item, index) => (
             <Slide key={index} index={index}>
-              <div className="w-full relative h-full">
+              <div className="w-full h-[132px] sm:h-[250px]  lg:h-[410px] relative">
                 <Image src={item} fill priority alt="slide1" />
               </div>
             </Slide>

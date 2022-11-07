@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className="font-Poppins bg-white w-full !h-full ">
       <Header />
-      <div className="min-h-screen mt-[81px] lg:mt-[95px]">
+      <div className="min-h-screen mt-[80px] lg:mt-[95px]">
         {router.pathname === "/" && <Subheader />}
         {children}
       </div>

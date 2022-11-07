@@ -40,14 +40,14 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
       <div
         onClick={handleLeft}
         className={` ${
-          index === 0 ? "hidden" : "hidden lg:block "
+          index === 0 ? "hidden" : "hidden sm:block "
         } absolute top-[50%] w-fit rounded-full left-0 `}
       >
         <SlideButton icon="bi:arrow-left-short" />
       </div>
       <div
         onClick={handleRight}
-        className=" hidden lg:block absolute top-[50%] right-0 w-fit rounded-full "
+        className=" hidden sm:block absolute top-[50%] right-0 w-fit rounded-full "
       >
         <SlideButton icon="bi:arrow-right-short" />
       </div>

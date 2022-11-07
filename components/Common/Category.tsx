@@ -11,7 +11,7 @@ const Category: React.FC<Props> = ({ icon, text }) => {
   return (
     <Link
       href={`/${text}`}
-      className="bg-primaryTwo/20 rounded-full p-1 lg:p-2 w-[199px] flex items-center space-x-3 cursor-pointer"
+      className="bg-primaryTwo/20 rounded-full p-1 lg:p-[6px] w-[199px] flex items-center space-x-3 cursor-pointer"
     >
       <div className="p-2 bg-white rounded-full">
         <Icon
