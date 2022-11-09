@@ -37,7 +37,7 @@ const Menu: React.FC<Props> = ({ menuState }) => {
         menuState ? " w-[100%] md:w-[40%] " : "w-0"
       } !shadow-2xl lg:hidden fixed transition-all duration-700 ease-in-out bottom-0 bg-grayThree top-0 left-0 overflow-hidden !z-40 `}
     >
-      <div className="relative flex flex-col w-full px-4 mt-[90px] h-full ">
+      <div className="relative flex flex-col w-full px-5 mt-[90px] h-full ">
         <div className="flex flex-col space-y-6 pb-8 h-[calc(100vh-250px)] scroller scrollerSec overflow-auto overscroll-contain ">
           {cates.map((item, index) => (
             <Link
@@ -54,7 +54,7 @@ const Menu: React.FC<Props> = ({ menuState }) => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 bg-grayThree px-4 pt-5 pb-[33px] ">
+      <div className="absolute bottom-0 left-0 right-0 bg-grayThree px-5 pt-5 pb-[33px] ">
         <div className="flex space-x-10 mb-[33px]">
           <Dropdown color="text-primaryOne" text="NGN" />
           <Dropdown color="text-primaryOne" text="ENG" />
