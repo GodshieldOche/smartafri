@@ -77,8 +77,8 @@ const Header = () => {
               ))}
             </div>
             <div className="flex items-center space-x-6 ">
-              <Dropdown text="NGN" />
-              <Dropdown text="ENG" />
+              <Dropdown color="text-white" text="NGN" />
+              <Dropdown color="text-white" text="ENG" />
             </div>
           </div>
         </div>
