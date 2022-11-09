@@ -8,6 +8,8 @@ import SearchInput from "../Common/SearchInput";
 import { Icon } from "@iconify/react";
 import Dropdown from "../Common/Dropdown";
 import { useRouter } from "next/router";
+import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
+import { setMenuState } from "../../redux/slice/menu";
 
 const array = [
   "Best Sellers",
@@ -21,6 +23,9 @@ const array = [
 
 const Header = () => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { menuState } = useAppSelector((state) => state.menu);
+
   return (
     <div className="fixed top-0 right-0 left-0 w-full !z-50 bg-grayThree ">
       {/* Desktop */}
@@ -82,10 +87,13 @@ const Header = () => {
       {/* Mobile */}
       <div className="contain w-full flex  items-center justify-between lg:hidden py-6 ">
         <div className="flex items-center space-x-6">
-          <Icon
-            icon="ion:menu-outline"
-            className="!text-[32px] !text-grayOne"
-          />
+          <div onClick={() => dispatch(setMenuState(true))}>
+            <Icon
+              icon="ion:menu-outline"
+              className="!text-[32px] !text-grayOne"
+            />
+          </div>
+
           <div>
             <Image
               onClick={() => router.push("/")}
@@ -95,10 +103,18 @@ const Header = () => {
             />
           </div>
         </div>
-        <Icon
-          icon="ant-design:search-outlined"
-          className=" !text-xl !font-medium !text-grayOne"
-        />
+        {menuState ? (
+          <Icon
+            icon="iconoir:cancel"
+            className=" !text-2xl !font-medium !text-grayOne cursor-pointer"
+            onClick={() => dispatch(setMenuState(false))}
+          />
+        ) : (
+          <Icon
+            icon="ant-design:search-outlined"
+            className=" !text-xl !font-medium !text-grayOne cursor-pointer"
+          />
+        )}
       </div>
     </div>
   );
