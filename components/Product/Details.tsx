@@ -39,7 +39,7 @@ const Details = () => {
       {/* Action */}
       <div className="flex items-center !mt-5 lg:!my-0 space-x-3 md:space-x-5">
         <Button text="Add To Cart" />
-        <div className="py-3 px-5 lg:px-4 cursor-pointer bg-grayThree rounded-[5px] border border-grayTwo/30">
+        <div className="py-4 lg:py-3 px-5 lg:px-4 cursor-pointer bg-grayThree rounded-[5px] border border-grayTwo/30">
           <Icon icon="bi:heart-fill" className="!text-primaryOne !text-base" />
         </div>
       </div>
