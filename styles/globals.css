@@ -51,7 +51,7 @@
 }
 
 .spec {
-  @apply text-black font-light text-sm lg:text-base;
+  @apply text-grayOne text-sm lg:text-base;
 }
 
 .body {

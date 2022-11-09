@@ -38,7 +38,7 @@ const Review = () => {
             className="!text-sm lg:!text-lg  !text-grayTwo"
           />
         </div>
-        <p className="paragraph w-full max-w-[928px] ">
+        <p className="paragraph text-grayOne w-full max-w-[928px] ">
           You made it so simple. My new site is so much faster and easier to
           work with than my old site. I just choose the page, make the changes.
         </p>

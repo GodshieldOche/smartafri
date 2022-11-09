@@ -3,7 +3,7 @@ import React from "react";
 const Description = () => {
   return (
     <div className="w-full">
-      <p className="hidden lg:block paragraph">
+      <p className="hidden text-grayOne lg:block paragraph">
         Strong 2 Burner glass top Gas Cooker is the best choice and selling
         brand in Nigeria and Jumia online sales, it is made from a stainless
         steel with tempered glass while the used it with our 12.5Kg Gas Cylinder
@@ -29,7 +29,7 @@ const Description = () => {
         guarantees low gas consumption and clean potsSuperior
         QualityDurableEffective & ReliablePlease Notes
       </p>
-      <p className="lg:hidden paragraph">
+      <p className="lg:hidden text-grayOne paragraph">
         Strong 2 Burner glass top Gas Cooker is the best choice and selling
         brand in Nigeria and Jumia online sales, it is made from a stainless
         steel with tempered glass while the used it with our 12.5Kg Gas Cylinder
