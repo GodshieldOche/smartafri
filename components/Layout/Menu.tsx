@@ -54,7 +54,7 @@ const Menu: React.FC<Props> = ({ menuState }) => {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 px-4 pt-5 pb-[33px] ">
+      <div className="absolute bottom-0 left-0 right-0 bg-grayThree px-4 pt-5 pb-[33px] ">
         <div className="flex space-x-10 mb-[33px]">
           <Dropdown color="text-primaryOne" text="NGN" />
           <Dropdown color="text-primaryOne" text="ENG" />
