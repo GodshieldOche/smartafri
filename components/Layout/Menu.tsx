@@ -38,7 +38,7 @@ const Menu: React.FC<Props> = ({ menuState }) => {
       } !shadow-2xl lg:hidden fixed transition-all duration-700 ease-in-out bottom-0 bg-grayThree top-0 left-0 overflow-hidden !z-40 `}
     >
       <div className="relative flex flex-col w-full px-5 mt-[90px] h-full ">
-        <div className="flex flex-col space-y-6 pb-8 h-[calc(100vh-250px)] scroller scrollerSec overflow-auto overscroll-contain ">
+        <div className="flex flex-col space-y-6 pb-8 h-[calc(100vh-250px)] scroller overflow-auto overscroll-contain ">
           {cates.map((item, index) => (
             <Link
               href={`/${item.toLowerCase()}`}
@@ -47,7 +47,7 @@ const Menu: React.FC<Props> = ({ menuState }) => {
                 id?.includes(item.toLowerCase())
                   ? "text-primaryOne"
                   : "text-grayOne"
-              }  font-medium text-[15px] `}
+              }  text-sm `}
             >
               {item}
             </Link>
