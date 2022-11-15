@@ -46,7 +46,7 @@ const Profile = () => {
         }) => (
           <Form autoComplete="off" className="">
             <div className="w-full space-y-7 pb-10">
-              <div className="grid grid-cols-2 gap-x-7">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-7 lg:gap-x-7">
                 <Input
                   label="First Name"
                   name="firstName"

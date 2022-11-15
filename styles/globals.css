@@ -63,5 +63,5 @@
 }
 
 .dash-header {
-  @apply text-primaryOne text-lg font-semibold;
+  @apply text-primaryOne text-base lg:text-lg font-semibold;
 }
