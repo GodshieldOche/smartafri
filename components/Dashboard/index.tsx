@@ -17,7 +17,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
   }, []);
 
   return (
-    <div className="!mt-[100px] lg:!mt-[120px] contain grid grid-cols-12 gap-x-5  items-start bg-grayThree lg:bg-white   ">
+    <div className="!mt-[100px] lg:!mt-[120px] contain grid grid-cols-12 gap-x-5  items-start   ">
       <div
         className={` ${
           pathname === "/dashboard"
@@ -30,7 +30,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
       <div
         className={` ${
           pathname === "/dashboard" ? "hidden" : "col-span-12 lg:col-span-9 "
-        } h-full lg:px-8 py-6 bg-grayThree`}
+        } h-full lg:px-8 py-6  lg:bg-grayThree`}
       >
         {children}
       </div>
