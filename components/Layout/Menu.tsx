@@ -34,8 +34,8 @@ const Menu: React.FC<Props> = ({ menuState }) => {
   return (
     <div
       className={`${
-        menuState ? " w-[100%] md:w-[40%] " : "w-0"
-      } !shadow-2xl lg:hidden fixed transition-all duration-700 ease-in-out bottom-0 bg-grayThree top-0 left-0 overflow-hidden !z-40 `}
+        menuState ? "h-full " : "h-0"
+      } !shadow-2xl lg:hidden fixed transition-[hieght] duration-700 ease-in-out  w-[100%] md:w-[40%] bottom-0 bg-grayThree top-0 left-0 overflow-hidden !z-40 `}
     >
       <div className="relative flex flex-col w-full px-5 mt-[90px] h-full ">
         <div className="flex flex-col space-y-6 pb-8 h-[calc(100vh-250px)] scroller overflow-auto overscroll-contain ">

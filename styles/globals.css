@@ -38,6 +38,10 @@
   @apply w-full outline-none text-sm  placeholder:!text-grayOne py-2 pl-4 bg-white rounded-[7px] text-grayOne border focus:border-secondaryTwo;
 }
 
+.input-field {
+  @apply w-full outline-none text-sm  placeholder:!text-grayFour py-3 pl-4 bg-white rounded-[6px] text-grayFour border border-grayTwo/30 focus:border-primaryOne/30;
+}
+
 .secondaryThree {
   @apply text-secondaryThree text-sm lg:text-base opacity-50;
 }
@@ -56,4 +60,8 @@
 
 .body {
   @apply !mt-[100px] lg:!mt-[120px]  space-y-8;
+}
+
+.dash-header {
+  @apply text-primaryOne text-lg font-semibold;
 }
