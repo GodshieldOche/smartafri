@@ -17,7 +17,7 @@ const DashboardLinks = () => {
   }, [pathname]);
 
   return (
-    <div className="bg-grayThree py-6 lg:p-6">
+    <div className="bg-white lg:bg-grayThree py-6 lg:p-6">
       <div className="lg:hidden space-y-3 mb-[40px]">
         <h1 className="text-base font-[700]  text-primaryOne">
           Johnson Adewale
