@@ -23,7 +23,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
           pathname === "/dashboard"
             ? "col-span-12"
             : "hidden lg:block lg:!col-span-3 "
-        }`}
+        } px-1 `}
       >
         <DashboardLinks />
       </div>
