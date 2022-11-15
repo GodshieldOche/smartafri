@@ -17,7 +17,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className="font-Poppins bg-white w-full !h-full ">
       {menuState && <Menu menuState={menuState} />}
       <Header />
-      <div className="min-h-screen mt-[80px] lg:mt-[95px]">
+      <div className=" mt-[80px] mb-10 lg:mt-[95px]">
         {router.pathname === "/" && <Subheader />}
         {children}
       </div>
