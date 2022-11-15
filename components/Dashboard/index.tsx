@@ -30,7 +30,7 @@ const Dashboard: React.FC<Props> = ({ children }) => {
       <div
         className={` ${
           pathname === "/dashboard" ? "hidden" : "col-span-12 lg:col-span-9 "
-        } h-full lg:px-8 py-6  lg:bg-grayThree`}
+        } h-full lg:px-8 py-2 lg:py-6  lg:bg-grayThree`}
       >
         {children}
       </div>

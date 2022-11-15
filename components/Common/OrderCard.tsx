@@ -4,7 +4,7 @@ import React from "react";
 const OrderCard = () => {
   return (
     <div className="grid grid-cols-12 gap-x-5 border border-grayTwo/30 bg-white p-3  lg:py-4 lg:px-6 rounded-[8px] ">
-      <div className=" col-span-2 sm:col-span-1 w-9  h-9 lg:w-[40px] lg:h-[40px] relative justify-start">
+      <div className=" col-span-2 sm:col-span-1 w-9 lg:w-[40px] h-[40px] relative justify-start">
         <Image
           src={
             "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1667045382/SmartAfri/image_15_li0hjz.png"
@@ -13,7 +13,7 @@ const OrderCard = () => {
           alt="image 1"
         />
       </div>
-      <div className="col-span-7 lg:col-span-8 space-y-1 lg:space-y-2 w-full">
+      <div className="col-span-7 lg:col-span-8 space-y-2 w-full">
         <h1 className="text-xs lg:text-sm font-semibold text-black ">
           MAM Feed & Soothe Essenti...
         </h1>
