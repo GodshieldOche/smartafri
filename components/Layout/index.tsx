@@ -15,13 +15,24 @@ const Layout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   return (
     <div className="font-Poppins bg-white w-full !h-full ">
-      {menuState && <Menu menuState={menuState} />}
-      <Header />
-      <div className=" mt-[80px] mb-10 lg:mt-[95px]">
-        {router.pathname === "/" && <Subheader />}
-        {children}
+      <div className="contain">
+        {menuState && <Menu menuState={menuState} />}
       </div>
-      <Footer />
+      {!router.pathname.includes("/auth/") ? (
+        <>
+          <Header />
+          <div className=" mt-[80px] mb-10 lg:mt-[95px]">
+            {router.pathname === "/" && <Subheader />}
+            {children}
+          </div>
+          <Footer />
+        </>
+      ) : (
+        <div className="">
+          {router.pathname === "/" && <Subheader />}
+          {children}
+        </div>
+      )}
     </div>
   );
 };

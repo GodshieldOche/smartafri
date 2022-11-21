@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import useAppDispatch from "../../hooks/useDispatch";
+import { setMenuState } from "../../redux/slice/menu";
 import Button from "../Common/Button";
 import Dropdown from "../Common/Dropdown";
 
@@ -28,6 +30,7 @@ const cates = [
 
 const Menu: React.FC<Props> = ({ menuState }) => {
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const { id } = router.query;
 
@@ -40,17 +43,22 @@ const Menu: React.FC<Props> = ({ menuState }) => {
       <div className="relative flex flex-col w-full px-5 mt-[90px] h-full ">
         <div className="flex flex-col space-y-6 pb-8 h-[calc(100vh-250px)] scroller overflow-auto overscroll-contain ">
           {cates.map((item, index) => (
-            <Link
-              href={`/${item.toLowerCase()}`}
+            <div
               key={index}
               className={` ${
                 id?.includes(item.toLowerCase())
                   ? "text-primaryOne"
                   : "text-grayOne"
-              }  text-sm `}
+              }  text-sm cursor-pointer `}
+              onClick={() => {
+                dispatch(setMenuState(false));
+                setTimeout(() => {
+                  router.push(`/${item.toLowerCase()}`);
+                }, 1000);
+              }}
             >
               {item}
-            </Link>
+            </div>
           ))}
         </div>
       </div>
@@ -59,7 +67,15 @@ const Menu: React.FC<Props> = ({ menuState }) => {
           <Dropdown color="text-primaryOne" text="NGN" />
           <Dropdown color="text-primaryOne" text="ENG" />
         </div>
-        <Button text="Log In" />
+        <Button
+          action={() => {
+            dispatch(setMenuState(false));
+            setTimeout(() => {
+              router.push("/auth/signin");
+            }, 1000);
+          }}
+          text="Log In"
+        />
       </div>
     </div>
   );

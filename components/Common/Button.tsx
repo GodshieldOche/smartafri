@@ -1,14 +1,18 @@
 import React from "react";
+import ButtonLoader from "./ButtonLoader";
 
 interface Props {
   text: string;
   width?: string;
   color?: string;
+  action?: any;
+  loading?: boolean;
 }
 
-const Button: React.FC<Props> = ({ text, width, color }) => {
+const Button: React.FC<Props> = ({ text, width, color, action, loading }) => {
   return (
     <button
+      onClick={action}
       className={` lg:px-12 ${
         width ? width : "w-full lg:w-fit"
       }  py-[15px] lg:py-[12px] ${
@@ -16,7 +20,7 @@ const Button: React.FC<Props> = ({ text, width, color }) => {
       }  text-white text-sm  whitespace-nowrap rounded-[7px]`}
       type="button"
     >
-      {text}
+      {loading ? <ButtonLoader /> : text}
     </button>
   );
 };

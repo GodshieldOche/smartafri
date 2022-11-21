@@ -11,6 +11,7 @@ interface Props {
   handleChange: any;
   errors: any;
   touched: any;
+  handleBlur?: any;
 }
 
 const Input: React.FC<Props> = ({
@@ -22,6 +23,7 @@ const Input: React.FC<Props> = ({
   touched,
   value,
   handleChange,
+  handleBlur,
 }) => {
   const [inputType, setInputType] = useState<string>(type);
   const [active, setActive] = useState<boolean>(false);
@@ -34,10 +36,12 @@ const Input: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       <label htmlFor={name}>
         <h3
-          className={`${active ? "text-primaryOne" : "text-grayFour"} text-sm`}
+          className={`${active ? "text-primaryOne" : "text-grayFour"}  ${
+            errors && touched ? "!text-secondaryOne" : ""
+          } text-sm`}
         >
           {label}
         </h3>
@@ -50,31 +54,34 @@ const Input: React.FC<Props> = ({
           value={value}
           className={`input-field ${
             active ? "!text-primaryOne !border-primaryOne/30" : "text-grayFour"
-          } `}
+          }  ${errors && touched ? "!border-secondaryOne" : ""} `}
           onChange={handleChange}
           autoComplete="off"
           placeholder={placeholder}
           onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
+          onBlur={(e: React.FocusEvent) => {
+            setActive(false);
+            handleBlur(e);
+          }}
         />
-        {["password", "pin", "new", "current"].includes(name) && (
+        {["password", "confirmPassword"].includes(name) && (
           <div className="absolute h-full top-0 bottom-0 right-4 flex flex-col justify-center">
             {inputType === "password" ? (
               <RiEyeFill
                 onClick={() => setInputType("text")}
-                className="!text-lg !text-primaryOne cursor-pointer"
+                className="!text-sm md:!text-base !text-primaryOne cursor-pointer"
               />
             ) : (
               <RiEyeOffFill
                 onClick={() => setInputType("password")}
-                className="!text-lg !text-mainBlack cursor-pointer"
+                className="!text-sm md:!text-base !text-grayOne cursor-pointer"
               />
             )}
           </div>
         )}
       </div>
       <ErrorMessage
-        className="text-xs font-medium !text-red-400"
+        className="text-[10px] font-medium text-secondaryOne"
         name={name}
         component="div"
       />

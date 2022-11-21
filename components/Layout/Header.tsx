@@ -32,7 +32,9 @@ const Header = () => {
       <div className="contain w-full hidden lg:grid grid-cols-12 items-center gap-10  py-6">
         <div className="col-span-2">
           <Image
-            onClick={() => router.push("/")}
+            onClick={() => {
+              router.push("/");
+            }}
             className="cursor-pointer"
             src={logo}
             width={174}
@@ -55,7 +57,7 @@ const Header = () => {
         </div>
 
         <div className="col-span-2 flex justify-end">
-          <Button text="Log In" />
+          <Button action={() => router.push("/auth/signin")} text="Log In" />
         </div>
       </div>
 
@@ -63,14 +65,14 @@ const Header = () => {
         <div className="w-full overflow-hidden bg-primaryOne">
           {/* Desktop */}
           <div className="contain w-full hidden lg:flex items-center justify-between py-4">
-            <h2 className="text-[13px] !font-Poppins !font-medium tracking-wide text-grayThree capitalize">
+            <h2 className="text-[13px] !font-Poppins cursor-pointer !font-medium tracking-wide text-grayThree capitalize">
               All Categories
             </h2>
             <div className="flex items-center space-x-9 ">
               {array.map((item, index) => (
                 <h2
                   key={index}
-                  className="text-[13px] !font-Poppins !font-light tracking-wide text-grayThree capitalize"
+                  className="text-[13px] !font-Poppins !font-light tracking-wide text-grayThree capitalize cursor-pointer"
                 >
                   {item}
                 </h2>
@@ -90,13 +92,18 @@ const Header = () => {
           <div onClick={() => dispatch(setMenuState(true))}>
             <Icon
               icon="ion:menu-outline"
-              className="!text-[32px] !text-grayOne"
+              className="!text-[32px] !text-grayOne cursor-pointer"
             />
           </div>
 
           <div>
             <Image
-              onClick={() => router.push("/")}
+              onClick={() => {
+                dispatch(setMenuState(false));
+                setTimeout(() => {
+                  router.push(`/`);
+                }, 1000);
+              }}
               className="cursor-pointer"
               src={logoMobile}
               alt="logo"
