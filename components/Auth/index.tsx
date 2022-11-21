@@ -18,7 +18,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
           <Icon
             onClick={() => router.back()}
             icon="ic:round-arrow-back-ios-new"
-            className="!text-grayOne !text-xl !cursor-pointer"
+            className="!text-grayOne !text-lg !cursor-pointer"
           />
         </div>
         <div className="hidden md:block">
