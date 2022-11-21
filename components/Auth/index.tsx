@@ -13,7 +13,7 @@ const AuthLayout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
   return (
     <div className="min-w-screen min-h-screen bg-white lg:py-10 flex md:justify-center md:items-center ">
-      <div className="max-w-[686px] w-full  h-full bg-grayThree py-7 md:py-12 px-4 md:px-[80px] flex flex-col items-center space-y-8">
+      <div className="max-w-[686px] w-full  h-full md:bg-grayThree py-7 md:py-12 px-4 md:px-[80px] flex flex-col items-center space-y-8">
         <div className=" md:hidden w-full">
           <Icon
             onClick={() => router.back()}
