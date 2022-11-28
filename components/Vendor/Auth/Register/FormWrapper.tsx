@@ -108,6 +108,7 @@ const FormWrapper = () => {
                 ? "text-primaryOne"
                 : "text-grayOne"
             }  text-sm text-center`}
+            key={index}
           >
             {item}
             <br />
