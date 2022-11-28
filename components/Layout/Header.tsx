@@ -53,7 +53,11 @@ const Header = () => {
 
         <div className="col-span-3 flex justify-end items-center space-x-8">
           <IconText icon="clarity:shopping-cart-solid" text="Cart" />
-          <IconText icon="bi:person-fill" text="Become a seller" />
+          <IconText
+            icon="bi:person-fill"
+            text="Become a seller"
+            action={() => router.push("/vendor/auth/register")}
+          />
         </div>
 
         <div className="col-span-2 flex justify-end">

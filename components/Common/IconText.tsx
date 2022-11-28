@@ -4,11 +4,15 @@ import { Icon } from "@iconify/react";
 interface Props {
   icon: string;
   text: string;
+  action?: any;
 }
 
-const IconText: React.FC<Props> = ({ icon, text }) => {
+const IconText: React.FC<Props> = ({ icon, text, action }) => {
   return (
-    <div className="flex flex-col items-center cursor-pointer space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0">
+    <div
+      onClick={action}
+      className="flex flex-col items-center cursor-pointer space-y-2 lg:flex-row lg:space-x-2 lg:space-y-0"
+    >
       <div className="relative">
         <Icon icon={icon} className="!text-primaryOne !text-xl" />
         {text === "Cart" && (

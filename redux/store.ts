@@ -1,16 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import menuReducer from "./slice/menu";
+import registerReducer from "./slice/register";
+import signinReducer from "./slice/signin";
+import sessionReducer from "./slice/session";
 
 const makeStore = () =>
   configureStore({
     reducer: {
       menu: menuReducer,
+      register: registerReducer,
+      signin: signinReducer,
+      session: sessionReducer,
     },
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      }),
   });
 
 export type AppStore = ReturnType<typeof makeStore>;

@@ -4,6 +4,9 @@ import * as yup from "yup";
 import Button from "../Common/Button";
 import Input from "../Formik/input";
 import { useRouter } from "next/router";
+import useAppDispatch from "../../hooks/useDispatch";
+import { postSignin, reset } from "../../redux/slice/signin";
+import { toast } from "react-toastify";
 
 const signinSchema = yup.object().shape({
   email: yup
@@ -24,6 +27,7 @@ const SignIn = () => {
     password: "",
   };
 
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const handleRouting = () => {
@@ -42,7 +46,17 @@ const SignIn = () => {
         initialValues={initialValues}
         validationSchema={signinSchema}
         onSubmit={(data, { resetForm, setSubmitting }) => {
-          console.log(data);
+          dispatch(postSignin(data)).then((res: any) => {
+            if (res.error) {
+              toast.error("Invalid Email or Password");
+              dispatch(reset());
+              return setSubmitting(false);
+            }
+            toast.success("Successful");
+            router.push("/");
+            dispatch(reset());
+            setSubmitting(false);
+          });
         }}
       >
         {({

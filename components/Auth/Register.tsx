@@ -4,13 +4,16 @@ import * as yup from "yup";
 import Button from "../Common/Button";
 import Input from "../Formik/input";
 import { useRouter } from "next/router";
+import useAppDispatch from "../../hooks/useDispatch";
+import { postRegister, reset } from "../../redux/slice/register";
+import { toast } from "react-toastify";
 
 const registerSchema = yup.object().shape({
   email: yup
     .string()
     .email("Email address is incorrect")
     .required("This field is required."),
-  fullName: yup.string().required("This field is required."),
+  full_name: yup.string().required("This field is required."),
   password: yup.string().required("This field is required."),
   confirmPassword: yup
     .string()
@@ -20,7 +23,7 @@ const registerSchema = yup.object().shape({
 
 interface registerValues {
   email: string;
-  fullName: string;
+  full_name: string;
   password: string;
   confirmPassword: string;
 }
@@ -28,10 +31,12 @@ interface registerValues {
 const Register = () => {
   const initialValues: registerValues = {
     email: "",
-    fullName: "",
+    full_name: "",
     password: "",
     confirmPassword: "",
   };
+
+  const dispatch = useAppDispatch();
 
   const router = useRouter();
 
@@ -51,7 +56,19 @@ const Register = () => {
         initialValues={initialValues}
         validationSchema={registerSchema}
         onSubmit={(data, { resetForm, setSubmitting }) => {
-          console.log(data);
+          const body: any = { ...data };
+          delete body.confirmPassword;
+          dispatch(postRegister(body)).then((res: any) => {
+            if (res.error) {
+              toast.error("Email already Exist");
+              dispatch(reset());
+              return setSubmitting(false);
+            }
+            toast.success("Successful");
+            handleRouting();
+            dispatch(reset());
+            setSubmitting(false);
+          });
         }}
       >
         {({
@@ -66,14 +83,14 @@ const Register = () => {
           <Form autoComplete="off" className="space-y-6">
             <Input
               label="Full Name"
-              name="fullName"
-              type="fullName"
-              value={values.fullName}
+              name="full_name"
+              type="text"
+              value={values.full_name}
               handleChange={handleChange}
               placeholder="Full Name"
               handleBlur={handleBlur}
-              errors={errors.fullName}
-              touched={touched.fullName}
+              errors={errors.full_name}
+              touched={touched.full_name}
             />
             <Input
               label="Email Address"

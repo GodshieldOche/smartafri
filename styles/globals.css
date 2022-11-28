@@ -35,11 +35,11 @@
 }
 
 .input {
-  @apply w-full outline-none text-sm  placeholder:!text-grayOne py-2 pl-4 bg-white rounded-[7px] text-grayOne border focus:border-secondaryTwo;
+  @apply w-full outline-none text-sm  placeholder:!text-grayOne py-3 pl-4 bg-white rounded-[7px] text-grayOne border focus:border-secondaryTwo;
 }
 
 .input-field {
-  @apply w-full outline-none text-sm  placeholder:!text-grayFour py-3 pl-4 bg-white rounded-[6px] text-grayFour border border-grayTwo/30 focus:border-primaryOne/30;
+  @apply w-full outline-none text-sm  placeholder:!text-grayFour py-4 pl-4 bg-white rounded-[6px] text-grayFour border border-grayTwo/30 focus:border-primaryOne/30;
 }
 
 .secondaryThree {
@@ -64,4 +64,8 @@
 
 .dash-header {
   @apply text-primaryOne text-base lg:text-lg font-semibold;
+}
+
+.progress-bar {
+  @apply w-full h-full flex items-center justify-between relative before:block before:absolute before:top-[50%] before:h-[2px] before:w-full before:bg-[#E8ECEF];
 }
