@@ -47,7 +47,12 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
       </div>
       <div
         onClick={handleRight}
-        className=" hidden sm:block absolute top-[50%] right-0 w-fit rounded-full "
+        className={`${
+          Math.ceil(index) >=
+          scrollRef.current.scrollWidth - scrollRef.current.offsetWidth
+            ? "hidden"
+            : "hidden sm:block"
+        }  absolute top-[50%] right-0 w-fit rounded-full`}
       >
         <SlideButton icon="bi:arrow-right-short" />
       </div>

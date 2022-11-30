@@ -69,3 +69,7 @@
 .progress-bar {
   @apply w-full h-full flex items-center justify-between relative before:block before:absolute before:top-[50%] before:h-[2px] before:w-full before:bg-[#E8ECEF];
 }
+
+.vendor_header {
+  @apply text-base lg:text-lg font-semibold;
+}

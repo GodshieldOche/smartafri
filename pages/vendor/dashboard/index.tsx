@@ -1,10 +1,10 @@
 import React from "react";
-import VendorDashLayout from "../../../components/Vendor/Dashboard";
+import VendorHome from "../../../components/Vendor/Dashboard/Home";
 
 const VendorDashboardPage = () => {
   return (
     <div>
-      <VendorDashLayout />
+      <VendorHome />
     </div>
   );
 };
