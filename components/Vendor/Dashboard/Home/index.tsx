@@ -45,7 +45,7 @@ const VendorHome = () => {
         <h1 className="vendor_header">Top regions with most sales</h1>
         <div
           style={{ boxShadow: "0px 0px 0px 1px rgba(0, 0, 0, 0.05)" }}
-          className="w-full h-[400px] flex justify-center items-center py-4 lg:!p-8 rounded-[4px]"
+          className="w-full h-[300px]  md:h-[400px] flex justify-center items-center py-4 lg:!p-8 rounded-[4px]"
         >
           <Chart />
         </div>
