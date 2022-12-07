@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
-import main from "../../public/main.png";
+import main from "../../public/white.png";
 import VendorAuthLayout from "./Auth";
 import DashHeader from "./Dashboard/DashHeader";
 import DashLinks from "./Dashboard/DashLinks";

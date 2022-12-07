@@ -1,6 +1,7 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ErrorMessage, Field } from "formik";
+import { RiEyeFill, RiEyeOffFill } from "react-icons/ri";
 
 interface Props {
   label: string;
@@ -12,7 +13,7 @@ interface Props {
   errors: any;
   touched: any;
   handleBlur?: any;
-  icon: string;
+  icon?: string;
 }
 
 const VendorInput: React.FC<Props> = ({
@@ -23,24 +24,50 @@ const VendorInput: React.FC<Props> = ({
   placeholder,
   label,
   icon,
+  type,
 }) => {
+  const [inputType, setInputType] = useState<string>(type);
+  const [active, setActive] = useState<boolean>(false);
+
+  useEffect(() => {
+    setInputType(type);
+    if (value) {
+      setActive(true);
+    }
+  }, []);
+
   return (
     <div className="space-y-2">
       <label htmlFor={name}>
         <h3 className={` text-grayOne`}>{label}</h3>
       </label>
-      <div className="flex border px-[18px] justify-center rounded-[5px]  items-center space-x-3">
-        <Icon icon={icon} className="!text-2xl !text-grayOne " />
+      <div className="flex relative border px-[18px] justify-center rounded-[5px]  items-center space-x-3">
+        {icon && <Icon icon={icon} className="!text-2xl !text-grayOne " />}
         <Field
           id={name}
           name={name}
-          type="text"
+          type={inputType}
           value={value}
           className="w-full py-[18px] outline-none text-grayOne"
           onChange={handleChange}
           autoComplete="off"
           placeholder={placeholder}
         />
+        {["password", "confirmPassword"].includes(name) && (
+          <div className="absolute h-full top-0 bottom-0 right-4 flex flex-col justify-center">
+            {inputType === "password" ? (
+              <RiEyeFill
+                onClick={() => setInputType("text")}
+                className="!text-sm md:!text-base !text-primaryOne cursor-pointer"
+              />
+            ) : (
+              <RiEyeOffFill
+                onClick={() => setInputType("password")}
+                className="!text-sm md:!text-base !text-grayOne cursor-pointer"
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

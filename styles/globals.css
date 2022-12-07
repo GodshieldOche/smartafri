@@ -73,3 +73,36 @@
 .vendor_header {
   @apply text-base lg:text-lg font-semibold;
 }
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Upload";
+  display: inline-block;
+  position: absolute;
+  background-color: #4082e6;
+  border-radius: 3px;
+  padding: 8px 24px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+  top: 22%;
+}
+.custom-file-input:hover::before {
+  border-color: black;
+}
+
+select::expand {
+  display: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}

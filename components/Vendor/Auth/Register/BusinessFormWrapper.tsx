@@ -5,11 +5,12 @@ import useAppDispatch from "../../../../hooks/useDispatch";
 import VendorInput from "../../../Formik/VendorInput";
 import Basic from "./Basic";
 import Contact from "./Contact";
+import Other from "./Other";
 import Profile from "./Profile";
 
-const progressText = [`Basic`, ` Contact`, `Profile`];
+const progressText = [`Basic`, ` Contact`, `Profile`, `Other`];
 
-const FormWrapper = () => {
+const BusinessFormWrapper = () => {
   const [page, setPage] = useState<number>(0);
   const [type, setType] = useState<string>("");
 
@@ -50,7 +51,7 @@ const FormWrapper = () => {
     if (page === 0) {
       return (
         <Basic
-          // type={type}
+          business={true}
           // setData={setData}
           // data={data}
           // setCorporate={setCorporate}
@@ -60,9 +61,17 @@ const FormWrapper = () => {
         />
       );
     } else if (page === 1) {
-      return <Contact setPage={setPage} scrollToTop={scrollToTop} />;
+      return (
+        <Contact business={true} setPage={setPage} scrollToTop={scrollToTop} />
+      );
+    } else if (page === 2) {
+      return (
+        <Profile business={true} setPage={setPage} scrollToTop={scrollToTop} />
+      );
     } else {
-      return <Profile setPage={setPage} scrollToTop={scrollToTop} />;
+      return (
+        <Other business={true} setPage={setPage} scrollToTop={scrollToTop} />
+      );
     }
   };
 
@@ -78,10 +87,10 @@ const FormWrapper = () => {
             ref={slider}
             className="block absolute top-[50%] h-[2px] bg-primaryOne z-30 "
           ></div>
-          {[1, 2, 3].map((item, index) => (
+          {[1, 2, 3, 4].map((item, index) => (
             <div
               key={item}
-              className={`progress-step w-[48px] h-[48px] rounded-full flex justify-center items-center
+              className={`progress-step w-[45px] h-[45px] rounded-full flex justify-center items-center
               ${
                 index === page || index < page
                   ? "bg-primaryOne"
@@ -94,7 +103,7 @@ const FormWrapper = () => {
                   icon="material-symbols:check-small-rounded"
                 />
               ) : (
-                <h1 className="text-lg text-white font-semibold ">{item}</h1>
+                <h1 className="text-base text-white font-semibold ">{item}</h1>
               )}
             </div>
           ))}
@@ -107,7 +116,7 @@ const FormWrapper = () => {
               index === page || index < page
                 ? "text-primaryOne"
                 : "text-grayOne"
-            }  text-sm text-center`}
+            }  text-[13px] text-center`}
             key={index}
           >
             {item}
@@ -122,4 +131,4 @@ const FormWrapper = () => {
   );
 };
 
-export default FormWrapper;
+export default BusinessFormWrapper;

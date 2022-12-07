@@ -1,5 +1,5 @@
 import Head from "next/head";
-import FormWrapper from "../../../../components/Vendor/Auth/Register/FormWrapper";
+import BusinessFormWrapper from "../../../../components/Vendor/Auth/Register/BusinessFormWrapper";
 
 export default function HomePage() {
   return (
@@ -9,7 +9,7 @@ export default function HomePage() {
         <meta name="description" content="SmartAfri by Uniccon Group" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FormWrapper />
+      <BusinessFormWrapper />
     </div>
   );
 }
