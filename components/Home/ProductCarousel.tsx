@@ -13,7 +13,7 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
   const handleRight = (e: any) => {
     e.preventDefault();
     scrollRef.current.scrollTo({
-      left: scrollRef.current.scrollLeft + 400,
+      left: scrollRef.current.scrollLeft + 500,
       behavior: "smooth",
     });
   };
@@ -21,7 +21,7 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
   const handleLeft = (e: any) => {
     e.preventDefault();
     scrollRef.current.scrollTo({
-      left: scrollRef.current.scrollLeft - 400,
+      left: scrollRef.current.scrollLeft - 500,
       behavior: "smooth",
     });
   };

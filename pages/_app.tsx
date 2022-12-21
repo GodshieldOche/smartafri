@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import absoluteUrl from "next-absolute-url";
 import App from "next/app";
 import { clearToken } from "../helper";
+import NextNprogress from "nextjs-progressbar";
 
 export default function MyApp({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -13,6 +14,7 @@ export default function MyApp({ Component, ...rest }: AppProps) {
   return (
     <Provider store={store}>
       <Layout currentUser={props.pageProps.currentUser}>
+        <NextNprogress color="#4082E6" />
         <Component {...props.pageProps} />
       </Layout>
     </Provider>
@@ -25,25 +27,18 @@ MyApp.getInitialProps = async (appContext: any) => {
 
   const jwt = appContext?.ctx?.req?.cookies?.smartToken || null;
 
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${jwt}`,
-  };
-
-  const requestOptions = {
-    method: "GET",
-    headers,
-  };
-
-  // console.log(appContext);
   const pathname: string = appContext.ctx.pathname;
-  const { origin } = absoluteUrl(appContext.ctx.req);
 
   let user = null;
 
-  console.log(origin);
-
   if (jwt) {
+    const requestOptions = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
+      },
+    };
     const res = await fetch(
       `https://apis.smartafri.com/api/web/auth-user`,
       requestOptions
@@ -61,8 +56,6 @@ MyApp.getInitialProps = async (appContext: any) => {
     user = null;
   }
 
-  console.log(user);
-  console.log(jwt);
   return {
     pageProps: {
       ...appProps.pageProps,
