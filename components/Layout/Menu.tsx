@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import useAppDispatch from "../../hooks/useDispatch";
+import { currentUser } from "../../interface";
 import { setMenuState } from "../../redux/slice/menu";
 import Button from "../Common/Button";
 import Dropdown from "../Common/Dropdown";
@@ -29,6 +30,13 @@ const cates = [
 ];
 
 const Menu: React.FC<Props> = ({ menuState }) => {
+  const [user, setUser] = React.useState<currentUser | null>(null);
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("user");
+    setUser(JSON.parse(data as string));
+  }, []);
+
   const router = useRouter();
   const dispatch = useAppDispatch();
 
@@ -67,15 +75,29 @@ const Menu: React.FC<Props> = ({ menuState }) => {
           <Dropdown color="text-primaryOne" text="NGN" />
           <Dropdown color="text-primaryOne" text="ENG" />
         </div>
-        <Button
-          action={() => {
-            dispatch(setMenuState(false));
-            setTimeout(() => {
-              router.push("/auth/signin");
-            }, 1000);
-          }}
-          text="Log In"
-        />
+        {user && (
+          <Button
+            action={() => {
+              dispatch(setMenuState(false));
+              setTimeout(() => {
+                router.push("/dashboard");
+              }, 1000);
+            }}
+            text="View Profile"
+            color="bg-primaryTwo"
+          />
+        )}
+        {!user && (
+          <Button
+            action={() => {
+              dispatch(setMenuState(false));
+              setTimeout(() => {
+                router.push("/auth/signin");
+              }, 1000);
+            }}
+            text="Log In"
+          />
+        )}
       </div>
     </div>
   );

@@ -1,12 +1,16 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import useAppDispatch from "../../hooks/useDispatch";
+import { logout } from "../../redux/slice/session";
 import Button from "../Common/Button";
 import DashIconText from "../Common/DashIconText";
 
 const DashboardLinks = () => {
   const [active, setActive] = useState("personal information");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { pathname } = router;
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (pathname.includes("/profile")) {
@@ -15,6 +19,18 @@ const DashboardLinks = () => {
       setActive("orders");
     }
   }, [pathname]);
+
+  const handleLogout = () => {
+    setLoading(true);
+    dispatch(logout()).then((res: any) => {
+      console.log(res);
+      localStorage.removeItem("user");
+      setTimeout(() => {
+        setLoading(false);
+        location.reload();
+      }, 1500);
+    });
+  };
 
   return (
     <div className="bg-white lg:bg-grayThree py-2 lg:p-6">
@@ -61,7 +77,13 @@ const DashboardLinks = () => {
           text="Help"
           icon="fluent:chat-help-20-filled"
         />
-        <Button text="Log Out" color="bg-primaryTwo" width="w-full" />
+        <Button
+          text="Log Out"
+          color="bg-primaryTwo"
+          action={handleLogout}
+          loading={loading}
+          width="w-full"
+        />
       </div>
     </div>
   );

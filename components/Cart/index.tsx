@@ -61,11 +61,15 @@ const Cart = () => {
   return (
     <div className="!mt-[100px] lg:!mt-[120px] contain grid grid-cols-12 gap-x-5  items-start   ">
       <div
-        className={`hidden lg:flex lg:!col-span-3 px-4 py-8 bg-grayThree flex-col space-y-10  `}
+        className={`col-span-12 order-last lg:order-first lg:!col-span-3 lg:px-4 py-8 lg:bg-grayThree flex-col space-y-10  `}
       >
         <div className="flex justify-between items-center">
-          <h3 className="text-base text-grayOne font-medium ">Sub Total</h3>
-          <h3 className="text-xl font-bold text-primaryOne  ">₦4,000</h3>
+          <h3 className="text-sm lg:text-base text-grayOne font-medium ">
+            Sub Total
+          </h3>
+          <h3 className="text-lg lg:text-xl font-bold text-primaryOne  ">
+            ₦4,000
+          </h3>
         </div>
         <Button
           text="Check Out"
