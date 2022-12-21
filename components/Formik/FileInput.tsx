@@ -32,7 +32,7 @@ const FileInput: React.FC<Props> = ({
           name={name}
           type="file"
           value={value}
-          className="w-full py-[18px] relative custom-file-input outline-none text-grayOne "
+          className="w-full py-4 text-sm relative custom-file-input outline-none text-grayOne "
           onChange={handleChange}
           autoComplete="off"
         />

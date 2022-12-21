@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import VendorInput from "../../../Formik/VendorInput";
@@ -35,6 +35,10 @@ const Contact: React.FC<RegisterProps> = ({
   setPage,
   business,
 }) => {
+  const [country, setCountry] = useState("Nigeria");
+  const [state, setState] = useState("State");
+  const [countryId, setCountryId] = useState("Nigeria");
+
   const initialValues: contactValues = {
     logo: "",
     country: "",
@@ -94,8 +98,8 @@ const Contact: React.FC<RegisterProps> = ({
                   name="country"
                   icon="carbon:earth-southeast-asia"
                   options={[{ name: "Nigeria", value: "Nigeria" }]}
-                  value={values.country}
-                  handleChange={handleChange}
+                  value={country}
+                  handleChange={setCountry}
                   errors={errors.country}
                   touched={touched.country}
                 />
@@ -103,8 +107,8 @@ const Contact: React.FC<RegisterProps> = ({
                   label="State"
                   name="state"
                   options={[{ name: "FCT", value: "FCT" }]}
-                  value={values.state}
-                  handleChange={handleChange}
+                  value={state}
+                  handleChange={setState}
                   errors={errors.state}
                   touched={touched.state}
                 />

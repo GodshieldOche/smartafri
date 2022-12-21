@@ -19,9 +19,9 @@ const OutlineBtn: React.FC<Props> = ({
   return (
     <button
       onClick={action}
-      className={` lg:px-12 ${width ? width : "w-full lg:w-fit"}  py-3 ${
+      className={` lg:px-12 ${width ? width : "w-full lg:w-fit"}  py-[10px] ${
         color ? color : "border-2 border-primaryOne"
-      }  text-primaryOne text-lg  whitespace-nowrap rounded-[7px]`}
+      }  text-primaryOne text-base  whitespace-nowrap rounded-[7px]`}
       type="button"
     >
       {loading ? <ButtonLoader /> : text}

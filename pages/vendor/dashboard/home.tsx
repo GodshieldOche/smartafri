@@ -15,4 +15,23 @@ const VendorDashboardPage = () => {
   );
 };
 
+export async function getServerSideProps(context: any) {
+  setTimeout(() => {
+    const jwt = context.req?.cookies?.smartToken;
+
+    if (!jwt) {
+      return {
+        redirect: {
+          destination: "/vendor/auth/signin",
+          permanent: false,
+        },
+      };
+    }
+  }, 1000);
+
+  return {
+    props: {},
+  };
+}
+
 export default VendorDashboardPage;

@@ -4,6 +4,7 @@ import menuReducer from "./slice/menu";
 import registerReducer from "./slice/register";
 import signinReducer from "./slice/signin";
 import sessionReducer from "./slice/session";
+import vendorSignInReducer from "./slice/vendor/vendorSignin";
 
 const makeStore = () =>
   configureStore({
@@ -12,6 +13,7 @@ const makeStore = () =>
       register: registerReducer,
       signin: signinReducer,
       session: sessionReducer,
+      vendorSignIn: vendorSignInReducer,
     },
   });
 

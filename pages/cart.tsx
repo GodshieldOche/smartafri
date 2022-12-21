@@ -1,16 +1,15 @@
 import Head from "next/head";
-import React from "react";
+import Cart from "../components/Cart";
 
-const VendprDashboardProductsPage = () => {
+export default function HomePage() {
   return (
-    <div>
+    <div className="">
       <Head>
-        <title>SmartAfri Vendor | Sales</title>
+        <title>SmartAfri | Home</title>
         <meta name="description" content="SmartAfri by Uniccon Group" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Cart />
     </div>
   );
-};
-
-export default VendprDashboardProductsPage;
+}

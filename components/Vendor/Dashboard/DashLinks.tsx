@@ -17,18 +17,18 @@ const DashLink: React.FC<Props> = ({ icon, text, name }) => {
     <Link
       href={`/vendor/dashboard${name}`}
       className={`w-full flex items-center py-3 px-10 space-x-4 ${
-        active === name ? "bg-primaryOne" : ""
+        active.includes(name) && name !== "" ? "bg-primaryOne" : ""
       } cursor-pointer`}
     >
       <Icon
         icon={icon}
         className={`text-lg ${
-          active === name ? "text-white" : "text-[#B1B1B1]"
+          active.includes(name) && name !== "" ? "text-white" : "text-[#B1B1B1]"
         }  `}
       />
       <h1
         className={`"text-base ${
-          active === name ? "text-white" : "text-[#B1B1B1]"
+          active.includes(name) && name !== "" ? "text-white" : "text-[#B1B1B1]"
         } font-medium "`}
       >
         {text}
@@ -40,7 +40,7 @@ const DashLink: React.FC<Props> = ({ icon, text, name }) => {
 const DashLinks = () => {
   return (
     <div className="flex flex-col space-y-3 w-full">
-      <DashLink name="" icon="bx:home-alt-2" text="Home" />
+      <DashLink name="/home" icon="bx:home-alt-2" text="Home" />
       <DashLink name="/products" icon="bi:box-seam" text="Products" />
       <DashLink name="/sales" icon="foundation:graph-bar" text="Sales" />
       <DashLink name="/payments" icon="la:cash-register" text="Payments" />

@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Register from "../../../../components/Vendor/Auth/Register";
 
-export default function HomePage() {
+export default function RegisterPage() {
   return (
     <div className="w-full">
       <Head>

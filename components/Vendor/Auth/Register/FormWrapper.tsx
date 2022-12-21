@@ -1,8 +1,5 @@
 import { Icon } from "@iconify/react";
-import { NextRouter, useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
-import useAppDispatch from "../../../../hooks/useDispatch";
-import VendorInput from "../../../Formik/VendorInput";
 import Basic from "./Basic";
 import Contact from "./Contact";
 import Profile from "./Profile";
@@ -11,9 +8,27 @@ const progressText = [`Basic`, ` Contact`, `Profile`];
 
 const FormWrapper = () => {
   const [page, setPage] = useState<number>(0);
-  const [type, setType] = useState<string>("");
-
-  const dispatch = useAppDispatch();
+  const [individualData, setIndividualData] = useState<{
+    name: string;
+    email: string;
+    phone_no: string;
+    password: string;
+    full_name: string;
+    account_type: string;
+    state: string;
+    country: string;
+    description: string;
+  }>({
+    name: "Uniccon",
+    email: "",
+    phone_no: "",
+    full_name: "",
+    password: "123",
+    country: "Nigeria",
+    state: "FCT",
+    account_type: "individual",
+    description: "individual",
+  });
 
   // Progress bar steps
   const progress = useRef<HTMLDivElement>(null);
@@ -35,34 +50,35 @@ const FormWrapper = () => {
     });
   };
 
-  // Routing
-  const router: NextRouter = useRouter();
-
-  useEffect(() => {
-    if (router.pathname === "/vendor/auth/register/company") {
-      setType("company");
-    } else {
-      setType("individual");
-    }
-  }, [router.pathname]);
-
   const formDisplay = () => {
     if (page === 0) {
       return (
         <Basic
           // type={type}
-          // setData={setData}
-          // data={data}
-          // setCorporate={setCorporate}
-          // corporate={corporate}
+          setData={setIndividualData}
+          data={individualData}
           setPage={setPage}
           scrollToTop={scrollToTop}
         />
       );
     } else if (page === 1) {
-      return <Contact setPage={setPage} scrollToTop={scrollToTop} />;
+      return (
+        <Contact
+          setData={setIndividualData}
+          data={individualData}
+          setPage={setPage}
+          scrollToTop={scrollToTop}
+        />
+      );
     } else {
-      return <Profile setPage={setPage} scrollToTop={scrollToTop} />;
+      return (
+        <Profile
+          setData={setIndividualData}
+          data={individualData}
+          setPage={setPage}
+          scrollToTop={scrollToTop}
+        />
+      );
     }
   };
 
@@ -72,7 +88,7 @@ const FormWrapper = () => {
         <h1 className="headingOne !text-primaryOne  ">Hello There</h1>
         <h2 className="text-base ">Get Started with your SmartAfri Account</h2>
       </div>
-      <div className="w-full px-[50px]">
+      <div className="w-full px-[60px]">
         <div ref={progress} className="progress-bar !overflow-hidden">
           <div
             ref={slider}
@@ -94,20 +110,20 @@ const FormWrapper = () => {
                   icon="material-symbols:check-small-rounded"
                 />
               ) : (
-                <h1 className="text-lg text-white font-semibold ">{item}</h1>
+                <h1 className="text-lg text-white font-medium ">{item}</h1>
               )}
             </div>
           ))}
         </div>
       </div>
-      <div className="w-full flex justify-between px-[36px] !mt-3 items-center">
+      <div className="w-full flex justify-between px-[50px] !mt-3 items-center">
         {progressText.map((item, index) => (
           <h1
             className={` ${
               index === page || index < page
                 ? "text-primaryOne"
                 : "text-grayOne"
-            }  text-sm text-center`}
+            }  text-[13px] text-center`}
             key={index}
           >
             {item}

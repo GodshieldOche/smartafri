@@ -30,7 +30,7 @@ const ProductCardTwo = () => {
         >
           <Image
             src={
-              "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1667045382/SmartAfri/image_15_li0hjz.png"
+              "https://res.cloudinary.com/drck33djn/image/upload/v1671010146/bookit/product_hampua.png"
             }
             fill
             alt="image 1"
@@ -43,7 +43,7 @@ const ProductCardTwo = () => {
         )}
       </div>
       <div className="flex flex-col !my-4 lg:!my-6 px-4 space-y-3">
-        <Link href={`/products/1`}>
+        <Link href={isVendor ? `/vendor/dashboard/products/1` : `/products/1`}>
           <h1
             className={`${
               isVendor ? "text-xs lg:text-sm " : "text-xs lg:text-lg "

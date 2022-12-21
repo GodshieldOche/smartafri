@@ -42,13 +42,13 @@ const VendorInput: React.FC<Props> = ({
         <h3 className={` text-grayOne`}>{label}</h3>
       </label>
       <div className="flex relative border px-[18px] justify-center rounded-[5px]  items-center space-x-3">
-        {icon && <Icon icon={icon} className="!text-2xl !text-grayOne " />}
+        {icon && <Icon icon={icon} className="!text-xl !text-grayOne " />}
         <Field
           id={name}
           name={name}
           type={inputType}
           value={value}
-          className="w-full py-[18px] outline-none text-grayOne"
+          className="w-full text-sm py-4 outline-none text-grayOne"
           onChange={handleChange}
           autoComplete="off"
           placeholder={placeholder}

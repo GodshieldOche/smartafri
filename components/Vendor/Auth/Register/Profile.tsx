@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import VendorInput from "../../../Formik/VendorInput";
@@ -9,13 +9,11 @@ import OutlineBtn from "../../../Common/OutlineBtn";
 import { RegisterProps } from "../../../../interface";
 import TextAreaInput from "../../../Formik/TextAreaInput";
 import { contactSchema, contactValues } from "./Contact";
+import axios from "axios";
 
 const profileSchema = yup.object().shape({
   other_docs: yup.string(),
-  niche: yup.string().required("This field is required."),
-  sub_niche: yup.string().required("This field is required."),
   description: yup.string().required("This field is required."),
-  bank_name: yup.string().required("This field is required."),
   account_number: yup.string().required("This field is required."),
 });
 
@@ -32,7 +30,11 @@ const Profile: React.FC<RegisterProps> = ({
   scrollToTop,
   setPage,
   business,
+  data,
 }) => {
+  const [niche, setNiche] = useState("Niche");
+  const [subNiche, setSubNiche] = useState("Sub Niche");
+  const [bankName, setBankName] = useState("Bank Name");
   const initialValues: profileValues = {
     other_docs: "",
     niche: "",
@@ -67,7 +69,27 @@ const Profile: React.FC<RegisterProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={profileSchema}
-          onSubmit={(data, { resetForm, setSubmitting }) => {}}
+          onSubmit={async (
+            { account_number },
+            { resetForm, setSubmitting }
+          ) => {
+            console.log("Working");
+            try {
+              const res = await axios.post(
+                "https://apis.smartafri.com/api/vendor/auth/register",
+                data,
+                {
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+
+              console.log(res);
+            } catch (error) {
+              console.log(error);
+            }
+          }}
         >
           {({
             errors,
@@ -94,8 +116,8 @@ const Profile: React.FC<RegisterProps> = ({
                   label="Niche"
                   name="niche"
                   options={[{ name: "Niche", value: "Niche" }]}
-                  value={values.niche}
-                  handleChange={handleChange}
+                  value={niche}
+                  handleChange={setNiche}
                   errors={errors.niche}
                   touched={touched.niche}
                 />
@@ -103,8 +125,8 @@ const Profile: React.FC<RegisterProps> = ({
                   label="Sub Niche"
                   name="sub_niche"
                   options={[{ name: "Sub Niche", value: "Sub Niche" }]}
-                  value={values.sub_niche}
-                  handleChange={handleChange}
+                  value={subNiche}
+                  handleChange={setSubNiche}
                   errors={errors.sub_niche}
                   touched={touched.sub_niche}
                 />
@@ -132,8 +154,8 @@ const Profile: React.FC<RegisterProps> = ({
                     label="Bank Name"
                     name="bank_name"
                     options={[{ name: "Bank Name", value: "Bank Name" }]}
-                    value={values.bank_name}
-                    handleChange={handleChange}
+                    value={bankName}
+                    handleChange={setBankName}
                     errors={errors.bank_name}
                     touched={touched.bank_name}
                   />
@@ -156,7 +178,7 @@ const Profile: React.FC<RegisterProps> = ({
                   width="w-full"
                   action={handlePrev}
                 />
-                <Buttonv2 text="Next" width="w-full" action={handleNext} />
+                <Buttonv2 text="Next" width="w-full" action={handleSubmit} />
               </div>
             </Form>
           )}

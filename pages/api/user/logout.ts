@@ -4,7 +4,7 @@ import { serialize } from "cookie";
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   let serialised;
 
-  serialised = serialize("jwt", null!, {
+  serialised = serialize("smartToken", null!, {
     httpOnly: true,
     secure: process.env.NODE_ENV !== "development",
     sameSite: "strict",

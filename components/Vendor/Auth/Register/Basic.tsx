@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import VendorInput from "../../../Formik/VendorInput";
@@ -42,7 +42,14 @@ interface basicValuesBusiness {
   business_role: string;
 }
 
-const Basic: React.FC<RegisterProps> = ({ setPage, scrollToTop, business }) => {
+const Basic: React.FC<RegisterProps> = ({
+  setPage,
+  scrollToTop,
+  business,
+  setData,
+}) => {
+  const [isRegistered, setIsRegistered] = useState("No");
+  const [role, setRole] = useState("Your Role");
   const router = useRouter();
   const initialValues: basicValues = {
     email: "",
@@ -69,7 +76,23 @@ const Basic: React.FC<RegisterProps> = ({ setPage, scrollToTop, business }) => {
         <Formik
           initialValues={initialValues}
           validationSchema={basicSchema}
-          onSubmit={(data, { resetForm, setSubmitting }) => {}}
+          onSubmit={(
+            { full_name, email, phone_number },
+            { resetForm, setSubmitting }
+          ) => {
+            setData(
+              (prev) =>
+                (prev = {
+                  ...prev,
+                  full_name,
+                  email,
+                  phone_no: phone_number,
+                })
+            );
+
+            scrollToTop();
+            setPage((prev) => prev + 1);
+          }}
         >
           {({
             errors,
@@ -133,7 +156,7 @@ const Basic: React.FC<RegisterProps> = ({ setPage, scrollToTop, business }) => {
                   width="w-full"
                   action={() => router.back()}
                 />
-                <Buttonv2 text="Next" width="w-full" action={handleClick} />
+                <Buttonv2 text="Next" width="w-full" action={handleSubmit} />
               </div>
             </Form>
           )}
@@ -173,9 +196,12 @@ const Basic: React.FC<RegisterProps> = ({ setPage, scrollToTop, business }) => {
                 <DropdownInput
                   label="Registered Business"
                   name="is_business_registered"
-                  options={[{ name: "No", value: "No" }]}
-                  value={values.is_business_registered}
-                  handleChange={handleChange}
+                  options={[
+                    { name: "No", value: "No" },
+                    { name: "Yes", value: "Yes" },
+                  ]}
+                  value={isRegistered}
+                  handleChange={setIsRegistered}
                   errors={errors.is_business_registered}
                   touched={touched.is_business_registered}
                 />
@@ -206,8 +232,8 @@ const Basic: React.FC<RegisterProps> = ({ setPage, scrollToTop, business }) => {
                 label="Your Role"
                 name="business_role"
                 options={[{ name: "Your Role", value: "Your Role" }]}
-                value={values.business_role}
-                handleChange={handleChange}
+                value={role}
+                handleChange={setRole}
                 errors={errors.business_role}
                 touched={touched.business_role}
               />

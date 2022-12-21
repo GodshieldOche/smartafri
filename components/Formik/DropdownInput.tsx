@@ -2,6 +2,7 @@ import { Icon } from "@iconify/react";
 import { ErrorMessage, Field } from "formik";
 import React, { useState } from "react";
 import { TiArrowSortedDown } from "react-icons/ti";
+import DropOptions from "../Common/DropOptions";
 
 interface Props {
   label: string;
@@ -30,28 +31,22 @@ const DropdownInput: React.FC<Props> = ({
   const [active, setActive] = useState<boolean>(false);
 
   return (
-    <div className="space-y-2 w-full h-fit">
+    <div
+      className="space-y-2 relative w-full h-fit"
+      onClick={() => {
+        setActive(!active);
+      }}
+    >
       <label htmlFor={name} className=" ">
-        <h3 className={`text-grayOne`}>{label}</h3>
+        <h3 className={`${active ? "text-primaryOne" : "text-grayFour"}`}>
+          {label}
+        </h3>
       </label>
-      <div className=" w-full h-full flex relative border px-[18px] justify-center rounded-[5px]  items-center space-x-3">
+      <div className=" w-full h-full relative">
         {icon && <Icon icon={icon} className="!text-2xl !text-grayOne " />}
-        <Field
-          id={name}
-          name={name}
-          className={`w-full py-[18px] outline-none text-grayOne`}
-          as="select"
-          value={value}
-          onChange={handleChange}
-          onFocus={() => setActive(true)}
-          onBlur={() => setActive(false)}
-        >
-          {options.map((option, index) => (
-            <option className="!space-y-2" key={index} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </Field>
+        <div className="w-full py-4  px-[18px] border rounded-[5px] outline-none text-grayOne ">
+          <h3 className="text-sm">{value}</h3>
+        </div>
         <div className="absolute h-full top-0 bottom-0 my-auto right-3 flex flex-col justify-center">
           <Icon
             icon="dashicons:arrow-down-alt2"
@@ -60,11 +55,7 @@ const DropdownInput: React.FC<Props> = ({
         </div>
       </div>
 
-      <ErrorMessage
-        className="text-xs font-medium !text-red-400"
-        name={name}
-        component="div"
-      />
+      {active && <DropOptions handleChange={handleChange} options={options} />}
     </div>
   );
 };

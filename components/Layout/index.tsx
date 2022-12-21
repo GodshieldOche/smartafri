@@ -1,10 +1,5 @@
 import { useRouter } from "next/router";
-import React from "react";
-import { useAppSelector } from "../../hooks/useDispatch";
-import Footer from "./Footer";
-import Header from "./Header";
-import Menu from "./Menu";
-import Subheader from "./Subheader";
+import React, { useEffect } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import VendorDashLayout from "../Vendor";
@@ -12,17 +7,30 @@ import BuyerLayout from "./BuyerLayout";
 
 interface Props {
   children: React.ReactNode;
+  currentUser: any;
 }
 
-const Layout: React.FC<Props> = ({ children }) => {
-  const { menuState } = useAppSelector((state) => state.menu);
+const Layout: React.FC<Props> = ({ children, currentUser }) => {
+  const [user, setUser] = React.useState<any>(null);
   const router = useRouter();
+
+  React.useEffect(() => {
+    if (currentUser) {
+      console.log(currentUser);
+      localStorage.setItem("user", JSON.stringify(currentUser));
+
+      const data = localStorage.getItem("user");
+      setUser(JSON.parse(data as string));
+    }
+  }, []);
+
   return (
     <div className="font-Poppins bg-white w-full !h-full ">
+      <ToastContainer position="bottom-right" />
       {router.pathname.includes("/vendor") ? (
         <VendorDashLayout>{children}</VendorDashLayout>
       ) : (
-        <BuyerLayout>{children}</BuyerLayout>
+        <BuyerLayout currentUser={user}>{children}</BuyerLayout>
       )}
     </div>
   );

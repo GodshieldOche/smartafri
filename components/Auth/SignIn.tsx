@@ -53,9 +53,11 @@ const SignIn = () => {
               return setSubmitting(false);
             }
             toast.success("Successful");
-            router.push("/");
             dispatch(reset());
             setSubmitting(false);
+            setTimeout(() => {
+              location.reload();
+            }, 1500);
           });
         }}
       >

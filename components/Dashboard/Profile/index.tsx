@@ -40,6 +40,7 @@ const Profile = () => {
           errors,
           touched,
           handleSubmit,
+          handleBlur,
           values,
           handleChange,
           isSubmitting,
@@ -53,6 +54,7 @@ const Profile = () => {
                   type="name"
                   value={values.firstName}
                   handleChange={handleChange}
+                  handleBlur={handleBlur}
                   placeholder="First Name"
                   errors={errors.firstName}
                   touched={touched.firstName}
@@ -62,6 +64,7 @@ const Profile = () => {
                   name="lastName"
                   type="name"
                   value={values.lastName}
+                  handleBlur={handleBlur}
                   handleChange={handleChange}
                   placeholder="Last Name"
                   errors={errors.lastName}
@@ -74,6 +77,7 @@ const Profile = () => {
                 type="email"
                 value={values.email}
                 handleChange={handleChange}
+                handleBlur={handleBlur}
                 placeholder="Email Address"
                 errors={errors.email}
                 touched={touched.email}
@@ -89,6 +93,7 @@ const Profile = () => {
                 handleChange={handleChange}
                 placeholder="Billing Address"
                 errors={errors.address}
+                handleBlur={handleBlur}
                 touched={touched.address}
               />
             </div>

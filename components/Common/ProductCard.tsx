@@ -17,7 +17,7 @@ const ProductCard = () => {
         <div className=" w-[80px] h-[80px] lg:w-[145px] lg:h-[145px] relative">
           <Image
             src={
-              "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1667045382/SmartAfri/image_15_li0hjz.png"
+              "https://res.cloudinary.com/drck33djn/image/upload/v1671010146/bookit/product_hampua.png"
             }
             fill
             alt="image 1"

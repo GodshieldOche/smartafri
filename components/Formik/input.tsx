@@ -36,7 +36,7 @@ const Input: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 w-full">
       <label htmlFor={name}>
         <h3
           className={`${active ? "text-primaryOne" : "text-grayFour"}  ${
@@ -81,7 +81,7 @@ const Input: React.FC<Props> = ({
         )}
       </div>
       <ErrorMessage
-        className="text-[10px] font-medium text-secondaryOne"
+        className="text-[10px] !mt-2 font-medium text-secondaryOne"
         name={name}
         component="div"
       />

@@ -2,7 +2,6 @@ import { Icon } from "@iconify/react";
 import { NextRouter, useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import useAppDispatch from "../../../../hooks/useDispatch";
-import VendorInput from "../../../Formik/VendorInput";
 import Basic from "./Basic";
 import Contact from "./Contact";
 import Other from "./Other";

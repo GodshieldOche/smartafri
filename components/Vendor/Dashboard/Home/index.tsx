@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import React from "react";
+import DashHeader from "../DashHeader";
 import Chart from "./Chart";
 
 interface Props {
@@ -22,32 +23,35 @@ export const Box: React.FC<Props> = ({ icon, name, value }) => {
 
 const VendorHome = () => {
   return (
-    <div className="w-full h-full py-10 contain space-y-12">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-y-0 gap-x-5">
-        <Box
-          icon="la:money-bill-alt-solid"
-          name="Balance"
-          value="₦ 50,000,000"
-        />
-        <Box
-          icon="fluent:clipboard-bullet-list-ltr-20-regular"
-          name="Pending Balance"
-          value="₦ 50,000,000"
-        />
-        <Box
-          icon="ant-design:clock-circle-outlined"
-          name="Awaiting Shipment"
-          value="26"
-        />
-        <Box icon="carbon:send-alt" name="Shipped" value="234" />
-      </div>
-      <div className="w-full space-y-8 pb-10">
-        <h1 className="vendor_header">Top regions with most sales</h1>
-        <div
-          style={{ boxShadow: "0px 0px 0px 1px rgba(0, 0, 0, 0.05)" }}
-          className="w-full h-[350px]  md:h-[400px] flex justify-center items-center py-4 lg:!p-8 rounded-[4px]"
-        >
-          <Chart />
+    <div className="w-full ">
+      <DashHeader page="Home" />
+      <div className="vendor_starter">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-y-0 gap-x-5">
+          <Box
+            icon="la:money-bill-alt-solid"
+            name="Balance"
+            value="₦ 50,000,000"
+          />
+          <Box
+            icon="fluent:clipboard-bullet-list-ltr-20-regular"
+            name="Pending Balance"
+            value="₦ 50,000,000"
+          />
+          <Box
+            icon="ant-design:clock-circle-outlined"
+            name="Awaiting Shipment"
+            value="26"
+          />
+          <Box icon="carbon:send-alt" name="Shipped" value="234" />
+        </div>
+        <div className="w-full space-y-8 pb-10">
+          <h1 className="vendor_header">Top regions with most sales</h1>
+          <div
+            style={{ boxShadow: "0px 0px 0px 1px rgba(0, 0, 0, 0.05)" }}
+            className="w-full h-[350px]  md:h-[400px] flex justify-center items-center py-4 lg:!p-8 rounded-[4px]"
+          >
+            <Chart />
+          </div>
         </div>
       </div>
     </div>

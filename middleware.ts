@@ -6,14 +6,14 @@ import type { NextRequest } from "next/server";
 export async function middleware(request: NextRequest) {
   const { cookies } = request;
 
-  const jwt = cookies.get("jwt");
+  const jwt = cookies.get("smartToken");
 
   if (
     request.nextUrl.pathname.includes("/signin") ||
     request.nextUrl.pathname.includes("/register")
   ) {
     if (jwt) {
-      return NextResponse.redirect(new URL("/dashboard/profile", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
   }
 

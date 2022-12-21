@@ -1,6 +1,7 @@
 import { NextRouter, useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import Buttonv2 from "../../../Common/Butonv2";
+import OutlineBtn from "../../../Common/OutlineBtn";
 import RadioButton from "../../../Common/RadioButton";
 import TextButton from "../../../Common/TextButton";
 
@@ -28,14 +29,26 @@ const Register = () => {
           value="business"
         />
       </form>
-      <Buttonv2
+      <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+        <OutlineBtn
+          text="Go Back"
+          width="w-full"
+          action={() => router.back()}
+        />
+        <Buttonv2
+          text="Next"
+          width="w-full"
+          action={() => router.push(`/vendor/auth/register/${selectedOption}`)}
+        />
+      </div>
+      {/* <Buttonv2
         text="Next"
         width="w-full"
         action={() => router.push(`/vendor/auth/register/${selectedOption}`)}
       />
       <div className="w-full flex justify-center items-center !mt-6">
         <TextButton text="Go Back" />
-      </div>
+      </div> */}
     </div>
   );
 };

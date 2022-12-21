@@ -7,7 +7,7 @@ const OrderCard = () => {
       <div className=" col-span-2 sm:col-span-1 w-9 lg:w-[40px] h-[40px] relative justify-start">
         <Image
           src={
-            "https://res.cloudinary.com/dk6uhtgvo/image/upload/v1667045382/SmartAfri/image_15_li0hjz.png"
+            "https://res.cloudinary.com/drck33djn/image/upload/v1671010146/bookit/product_hampua.png"
           }
           fill
           alt="image 1"

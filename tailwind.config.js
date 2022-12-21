@@ -10,6 +10,7 @@ module.exports = {
         primaryOne: "#4082E6",
         primaryTwo: "#F95F09",
         primaryThree: "#F7CE6C",
+        primaryFour: "#63BF92",
         grayOne: "#848383",
         grayTwo: "#B0BABF",
         grayThree: "#FAFAFA",

@@ -39,7 +39,7 @@
 }
 
 .input-field {
-  @apply w-full outline-none text-sm  placeholder:!text-grayFour py-4 pl-4 bg-white rounded-[6px] text-grayFour border border-grayTwo/30 focus:border-primaryOne/30;
+  @apply w-full outline-none text-sm  placeholder:!text-grayFour py-3 pl-4 bg-white rounded-[6px] text-grayFour border border-grayTwo/30 focus:border-primaryOne/30;
 }
 
 .secondaryThree {
@@ -74,6 +74,10 @@
   @apply text-base lg:text-lg font-semibold;
 }
 
+.vendor_starter {
+  @apply w-full h-full py-10 !pt-20  px-4 sm:px-8 space-y-12;
+}
+
 .custom-file-input::-webkit-file-upload-button {
   visibility: hidden;
 }
@@ -105,4 +109,9 @@ select {
   -moz-appearance: none;
   -o-appearance: none;
   appearance: none;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.3);
+  background-color: #4082e6;
 }
