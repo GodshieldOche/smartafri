@@ -13,7 +13,7 @@ const DashIconText: React.FC<Props> = ({ text, icon, active, link }) => {
   return (
     <Link
       href={`/dashboard/${link}`}
-      className="flex items-center cursor-pointer flex-row space-x-4"
+      className="flex items-center cursor-pointer flex-row space-x-3"
     >
       <div className="relative">
         <Icon
@@ -22,7 +22,7 @@ const DashIconText: React.FC<Props> = ({ text, icon, active, link }) => {
             active === text.toLowerCase()
               ? "!text-primaryOne"
               : "text-primaryOne lg:!text-grayFour"
-          }   !text-[22px]`}
+          }   !text-[18px]`}
         />
       </div>
       <h2
@@ -30,7 +30,7 @@ const DashIconText: React.FC<Props> = ({ text, icon, active, link }) => {
           active === text.toLowerCase()
             ? "!text-primaryOne"
             : "text-primaryOne lg:!text-grayFour"
-        } text-base font-medium whitespace-nowrap `}
+        } text-[15px] lg:text-base font-medium whitespace-nowrap `}
       >
         {text}
       </h2>

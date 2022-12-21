@@ -40,7 +40,7 @@ const DashboardLinks = () => {
         </h1>
         <h1 className="text-sm text-secondaryThree">example@gmail.com</h1>
       </div>
-      <div className="flex flex-col space-y-12 lg:space-y-9 ">
+      <div className="flex flex-col space-y-10 lg:space-y-9 ">
         <DashIconText
           active={active}
           link="profile"
