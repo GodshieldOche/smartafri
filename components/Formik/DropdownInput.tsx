@@ -55,7 +55,13 @@ const DropdownInput: React.FC<Props> = ({
         </div>
       </div>
 
-      {active && <DropOptions handleChange={handleChange} options={options} />}
+      {active && (
+        <DropOptions
+          setActive={setActive}
+          handleChange={handleChange}
+          options={options}
+        />
+      )}
     </div>
   );
 };
