@@ -2,7 +2,7 @@ export interface RegisterProps {
   setPage: React.Dispatch<React.SetStateAction<number>>;
   scrollToTop: () => void;
   business?: boolean;
-  setData: React.Dispatch<
+  setData?: React.Dispatch<
     React.SetStateAction<{
       name: string;
       email: string;
@@ -15,7 +15,7 @@ export interface RegisterProps {
       description: string;
     }>
   >;
-  data: {
+  data?: {
     name: string;
     email: string;
     phone_no: string;

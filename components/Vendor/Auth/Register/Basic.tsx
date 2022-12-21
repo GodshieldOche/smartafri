@@ -80,7 +80,7 @@ const Basic: React.FC<RegisterProps> = ({
             { full_name, email, phone_number },
             { resetForm, setSubmitting }
           ) => {
-            setData(
+            setData!(
               (prev) =>
                 (prev = {
                   ...prev,
