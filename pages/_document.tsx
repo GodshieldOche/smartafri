@@ -8,7 +8,7 @@ export default function Document() {
         <Main />
         <NextScript />
 
-        <script src="https://js.paystack.co/v1/inline.js"></script>
+        {/* <script src="https://js.paystack.co/v1/inline.js"></script> */}
       </body>
     </Html>
   );

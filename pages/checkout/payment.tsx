@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Checkout from "../../components/Checkout";
 import Payment from "../../components/Checkout/Payment";
+import Script from "next/script";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Checkout>
         <Payment />
       </Checkout>
+      <Script src="https://js.paystack.co/v1/inline.js" />
     </div>
   );
 }
