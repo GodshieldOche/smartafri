@@ -5,7 +5,7 @@ import Button from "../Common/Button";
 import Input from "../Formik/input";
 import { useRouter } from "next/router";
 import useAppDispatch from "../../hooks/useDispatch";
-import { postRegister, reset } from "../../redux/slice/register";
+import { postRegister, reset } from "../../redux/slice/auth/register";
 import { toast } from "react-toastify";
 
 const registerSchema = yup.object().shape({

@@ -7,6 +7,8 @@ export default function Document() {
       <body className="scroller scrollerMain">
         <Main />
         <NextScript />
+
+        <script src="https://js.paystack.co/v1/inline.js"></script>
       </body>
     </Html>
   );

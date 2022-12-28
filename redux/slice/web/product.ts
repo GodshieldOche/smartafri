@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { storeSession } from "../auth/session";
 
 export type error = {
   errors: {}[];
@@ -13,22 +12,24 @@ export interface authState {
   error: object | null;
 }
 
-export const postVendorSignIn: any = createAsyncThunk(
-  `signin/postVendorSignIn`,
-  async (body: any, { dispatch, rejectWithValue }) => {
+export const getProduct: any = createAsyncThunk(
+  `product/getProduct`,
+  async (id: any, { dispatch, rejectWithValue }) => {
     try {
-      const { data }: any = await axios.post(
-        `https://apis.smartafri.com/api/vendor/auth/login`,
-        body,
+      const { data }: any = await axios.get(
+        `https://apis.smartafri.com/api/web/products`,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-      console.log(data);
-      dispatch(storeSession(data.data.token));
-      return data;
+
+      const payload = data.data.data.find(
+        (item: any) => item.id.toString() === id.toString()
+      );
+
+      return payload;
     } catch (error: any) {
       console.log(error);
       return rejectWithValue(error.message);
@@ -43,8 +44,8 @@ const initialState: authState = {
   error: null,
 };
 
-export const vendorSignInSlice = createSlice({
-  name: "signin",
+export const productSlice = createSlice({
+  name: "product",
   initialState,
   reducers: {
     reset: (state) => {
@@ -52,14 +53,14 @@ export const vendorSignInSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(postVendorSignIn.pending, (state) => {
+    builder.addCase(getProduct.pending, (state) => {
       state.loading = true;
     }),
-      builder.addCase(postVendorSignIn.fulfilled, (state, { payload }) => {
+      builder.addCase(getProduct.fulfilled, (state, { payload }) => {
         state.loading = false;
         state.data = payload;
       }),
-      builder.addCase(postVendorSignIn.rejected, (state, { payload }) => {
+      builder.addCase(getProduct.rejected, (state, { payload }) => {
         state.loading = false;
         state.data = payload;
       });
@@ -67,6 +68,6 @@ export const vendorSignInSlice = createSlice({
 });
 
 // // Other code such as selectors can use the imported `RootState` type
-export const { reset } = vendorSignInSlice.actions;
+export const { reset } = productSlice.actions;
 
-export default vendorSignInSlice.reducer;
+export default productSlice.reducer;

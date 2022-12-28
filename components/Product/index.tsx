@@ -1,5 +1,7 @@
 import { CarouselProvider } from "pure-react-carousel";
 import React, { useState } from "react";
+import { dummyProducts } from "../../data";
+import { product } from "../../interface";
 import TabText from "../Common/TabText";
 import Products from "../Products";
 import Description from "./Description";
@@ -14,9 +16,9 @@ const images = [
   "https://res.cloudinary.com/drck33djn/image/upload/v1667296275/w51_1_1_llckia.png",
 ];
 
-const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const products = dummyProducts;
 
-const Product = () => {
+const Product: React.FC<{ product: product }> = ({ product }) => {
   const [active, setActive] = useState<string>("description");
   return (
     <div className="body">
@@ -36,8 +38,8 @@ const Product = () => {
             <DetailsCarousel images={images} />
           </CarouselProvider>
         </div>
-        <div className="col-span-12 lg:col-span-5 flex flex-col space-y-5 justify-between  lg:max-w-[400px] ">
-          <Details />
+        <div className="col-span-12 lg:col-span-5 flex flex-col justify-between space-y-5   lg:max-w-[400px] ">
+          <Details product={product} />
         </div>
       </div>
 

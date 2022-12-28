@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import useAppDispatch from "../../hooks/useDispatch";
-import { logout } from "../../redux/slice/session";
+import { logout } from "../../redux/slice/auth/session";
 import Button from "../Common/Button";
 import DashIconText from "../Common/DashIconText";
 

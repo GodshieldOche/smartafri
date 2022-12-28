@@ -5,6 +5,7 @@ import Input from "../Formik/input";
 import Button from "../Common/Button";
 import { useRouter } from "next/router";
 import Dropdown from "../Formik/Dropdown";
+import axios from "axios";
 
 const cardSchema = yup.object().shape({
   cardNumber: yup.string().required("This field is required."),
@@ -27,6 +28,47 @@ const Payment = () => {
     cvv: "",
     expiryDate: "",
   };
+
+  const verifyPayment = async (reference: string) => {
+    try {
+      const { data } = await axios.get(
+        `https://api.paystack.co/transaction/verify/${reference}`,
+        {
+          headers: {
+            Authorization:
+              "Bearer sk_test_6db217e6fbac2cc4e993a74a7a09762741ce3321",
+          },
+        }
+      );
+      return data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  };
+
+  const handlePay = () => {
+    let handler = PaystackPop.setup({
+      key: "pk_test_3c12528ec7390e552ff520c320c1a287564218e5", // Replace with your public key
+      email: "goddyartz@gmail.com",
+      amount: 5000 * 100,
+      ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      // label: "Optional string that replaces customer email"
+      onClose: function () {
+        alert("Window closed.");
+      },
+      callback: function (response: any) {
+        verifyPayment(response.reference).then((data) => {
+          if (data.status === true) {
+            router.push("/dashboard/orders");
+          }
+        });
+      },
+    });
+
+    handler.openIframe();
+  };
+
   return (
     <div className="w-full space-y-7">
       <h1 className="dash-header ">Payment Method</h1>
@@ -95,11 +137,7 @@ const Payment = () => {
               )}
             </div>
             <div className="w-full !mt-14">
-              <Button
-                text="Proceed"
-                width="w-full"
-                action={() => router.push("/checkout/delivery")}
-              />
+              <Button text="Proceed" width="w-full" action={handlePay} />
             </div>
           </Form>
         )}

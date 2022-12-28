@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import { product } from "../../interface";
 import ProductCard from "../Common/ProductCard";
 import SlideButton from "../Common/SlideButton";
 
 interface Props {
-  products: number[];
+  products: product[];
 }
 
 const ProductCarousel: React.FC<Props> = ({ products }) => {
@@ -26,6 +27,8 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
     });
   };
 
+  console.log(products);
+
   return (
     <div className="w-full h-full relative p-6 bg-grayThree">
       <div
@@ -33,9 +36,10 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
         onScroll={() => setIndex(scrollRef.current.scrollLeft)}
         className="space-x-3 lg:space-x-5 flex w-full h-full items-center overflow-x-auto scroller "
       >
-        {products.map((item, index) => (
-          <ProductCard key={index} />
-        ))}
+        {products &&
+          products?.map((item, index) => (
+            <ProductCard product={item} key={index} />
+          ))}
       </div>
       <div
         onClick={handleLeft}

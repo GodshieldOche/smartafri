@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
 import { setMenuState } from "../../redux/slice/menu";
 import { currentUser } from "../../interface";
-import { logout } from "../../redux/slice/session";
+import { logout } from "../../redux/slice/auth/session";
 
 const array = [
   "Best Sellers",
@@ -69,7 +69,7 @@ const Header: React.FC<{ user: currentUser }> = ({ user }) => {
           />
         </div>
 
-        <div className="col-span-3 flex justify-end items-center space-x-8">
+        <div className="col-span-3 w-full flex justify-between items-center space-x-8">
           <IconText
             icon="clarity:shopping-cart-line"
             text="Cart"
@@ -90,7 +90,7 @@ const Header: React.FC<{ user: currentUser }> = ({ user }) => {
         {user && (
           <div
             onClick={() => router.push("/dashboard/profile")}
-            className=" cursor-pointer flex items-center space-x-2"
+            className=" col-span-2 cursor-pointer flex items-center justify-end  space-x-2"
           >
             <div>
               <svg

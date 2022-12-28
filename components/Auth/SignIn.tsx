@@ -5,7 +5,7 @@ import Button from "../Common/Button";
 import Input from "../Formik/input";
 import { useRouter } from "next/router";
 import useAppDispatch from "../../hooks/useDispatch";
-import { postSignin, reset } from "../../redux/slice/signin";
+import { postSignin, reset } from "../../redux/slice/auth/signin";
 import { toast } from "react-toastify";
 
 const signinSchema = yup.object().shape({

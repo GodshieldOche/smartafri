@@ -41,3 +41,34 @@ export type currentUser = {
   updated_at?: string;
   otp_created_at?: string;
 } | null;
+
+export type product = {
+  id: number;
+  name: string;
+  type: string;
+  brand: string;
+  details: string;
+  description: string;
+  location: string;
+  price: number;
+  quantity: number;
+  status: string;
+  reason: string;
+  part_no: string;
+  sku: string;
+  height: number;
+  width: number;
+  weight: number;
+  deleted_at?: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type cart = {
+  name: string;
+  seller: string;
+  quantity: number;
+  price: number;
+  id: number;
+  max: number;
+};

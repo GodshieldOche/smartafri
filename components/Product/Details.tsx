@@ -1,21 +1,76 @@
 import { Icon } from "@iconify/react";
+import { useRouter } from "next/router";
 import React from "react";
+import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
+import { cart, product } from "../../interface";
+import { addToCart } from "../../redux/slice/cart";
 import Button from "../Common/Button";
 import Rating from "../Common/Rating";
 
-const Details = () => {
+const Details: React.FC<{ product: product }> = ({ product }) => {
+  const [quantity, setQuantity] = React.useState(1);
+  const [inCart, setInCart] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
+
+  const cart = useAppSelector((state) => state.cart.data);
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    setLoading(true);
+    const inCart = cart.find(
+      (item) => item.id.toString() === product.id.toString()
+    );
+    setInCart(inCart ? true : false);
+    setLoading(false);
+  }, []);
+
+  const handleIncrement = () => {
+    if (quantity < product.quantity) {
+      setQuantity((prev) => prev + 1);
+    }
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    }
+  };
+
+  const handleAddToCart = () => {
+    setLoading(true);
+
+    const item = {
+      name: product.name,
+      seller: product.brand,
+      price: product.price,
+      quantity: quantity,
+      id: product.id,
+      max: product.quantity,
+    };
+
+    dispatch(addToCart(item));
+
+    setInCart(true);
+    setLoading(false);
+  };
+
+  const handleGoToCart = () => {
+    router.push("/cart");
+  };
+
   return (
     <>
       {/* Name */}
       <h1 className="text-black text-base lg:text-xl xl:text-2xl font-semibold ">
-        MAM Feed & Soothe Essential Soothe Essential
+        {product.name}
       </h1>
       {/* Rating */}
       <Rating />
       {/* Price */}
       <div className="space-y-5">
         <h1 className="text-primaryOne  text-xl lg:text-[28px] font-[700]  ">
-          ₦20,000
+          ₦ {product.price.toLocaleString()}
         </h1>
         <div className="flex items-center space-x-2">
           <Icon icon="clarity:tag-solid" className="!text-grayOne !text-sm" />
@@ -29,16 +84,24 @@ const Details = () => {
         <Icon
           icon="akar-icons:circle-minus-fill"
           className="!text-primaryOne !text-xl lg:!text-2xl cursor-pointer"
+          onClick={handleDecrement}
         />
-        <h1 className="text-xs lg:text-base text-black  ">2</h1>
+        <h1 className="text-xs lg:text-base text-black w-5 flex justify-center  ">
+          {quantity}
+        </h1>
         <Icon
           icon="akar-icons:circle-plus-fill"
           className="!text-primaryOne !text-xl lg:!text-2xl cursor-pointer"
+          onClick={handleIncrement}
         />
       </div>
       {/* Action */}
       <div className="flex items-center !mt-5 lg:!my-0 space-x-3 md:space-x-5">
-        <Button text="Add To Cart" />
+        <Button
+          text={inCart ? "Go To Cart" : "Add To Cart"}
+          action={inCart ? handleGoToCart : handleAddToCart}
+          loading={loading}
+        />
         <div className="py-4 lg:py-3 px-5 lg:px-4 cursor-pointer bg-grayThree rounded-[5px] border border-grayTwo/30">
           <Icon icon="bi:heart-fill" className="!text-primaryOne !text-base" />
         </div>

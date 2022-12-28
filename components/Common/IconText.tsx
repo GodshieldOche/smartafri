@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "@iconify/react";
+import { useAppSelector } from "../../hooks/useDispatch";
 
 interface Props {
   icon: string;
@@ -8,6 +9,13 @@ interface Props {
 }
 
 const IconText: React.FC<Props> = ({ icon, text, action }) => {
+  const cart = useAppSelector((state) => state.cart.data);
+  const [quantity, setQuantity] = React.useState(0);
+
+  React.useEffect(() => {
+    setQuantity(cart.reduce((acc, item) => acc + item.quantity, 0));
+  }, [cart]);
+
   return (
     <div
       onClick={action}
@@ -17,7 +25,9 @@ const IconText: React.FC<Props> = ({ icon, text, action }) => {
         <Icon icon={icon} className="!text-primaryOne !text-xl" />
         {text === "Cart" && (
           <div className="absolute -top-[10px] -right-2 h-5 w-5 rounded-full bg-secondaryOne border-2 border-white p-1  flex items-center justify-center">
-            <h1 className="text-[11px] lg:text-xs text-white font-medium">3</h1>
+            <h1 className="text-[11px] lg:text-xs text-white font-medium">
+              {quantity}
+            </h1>
           </div>
         )}
       </div>

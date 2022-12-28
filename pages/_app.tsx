@@ -3,10 +3,10 @@ import type { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import { wrapper } from "../redux/store";
 import { Provider } from "react-redux";
-import absoluteUrl from "next-absolute-url";
 import App from "next/app";
 import { clearToken } from "../helper";
 import NextNprogress from "nextjs-progressbar";
+import axios from "axios";
 
 export default function MyApp({ Component, ...rest }: AppProps) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -32,18 +32,21 @@ MyApp.getInitialProps = async (appContext: any) => {
   let user = null;
 
   if (jwt) {
-    const requestOptions = {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
-      },
-    };
-    const res = await fetch(
-      `https://apis.smartafri.com/api/web/auth-user`,
-      requestOptions
-    );
-    user = await res.json();
+    try {
+      const { data } = await axios.get(
+        `https://apis.smartafri.com/api/web/auth-user`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          },
+        }
+      );
+      user = data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
 
   if (pathname.includes("vendor") && !user?.account_type) {

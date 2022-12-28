@@ -1,15 +1,21 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import menuReducer from "./slice/menu";
-import registerReducer from "./slice/register";
-import signinReducer from "./slice/signin";
-import sessionReducer from "./slice/session";
+import cartReducer from "./slice/cart";
+import registerReducer from "./slice/auth/register";
+import signinReducer from "./slice/auth/signin";
+import sessionReducer from "./slice/auth/session";
 import vendorSignInReducer from "./slice/vendor/vendorSignin";
+import productsReducer from "./slice/web/products";
+import productReducer from "./slice/web/product";
 
 const makeStore = () =>
   configureStore({
     reducer: {
       menu: menuReducer,
+      cart: cartReducer,
+      products: productsReducer,
+      product: productReducer,
       register: registerReducer,
       signin: signinReducer,
       session: sessionReducer,

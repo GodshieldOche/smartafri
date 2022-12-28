@@ -1,9 +1,10 @@
 import React from "react";
+import { product } from "../interface";
 import ProductCarousel from "./Home/ProductCarousel";
 
 interface Props {
   title: string;
-  products: number[];
+  products: product[];
 }
 
 const Products: React.FC<Props> = ({ title, products }) => {

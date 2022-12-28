@@ -17,7 +17,10 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (request.nextUrl.pathname.startsWith("/dashboard")) {
+  if (
+    request.nextUrl.pathname.includes("/dashboard") ||
+    request.nextUrl.pathname.includes("/checkout")
+  ) {
     if (!jwt) {
       return NextResponse.redirect(new URL("/auth/signin", request.url));
     }
@@ -26,5 +29,10 @@ export async function middleware(request: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/dashboard/:path*", "/auth/signin", "/auth/register"],
+  matcher: [
+    "/dashboard/:path*",
+    "/auth/signin",
+    "/auth/register",
+    "/checkout/:path*",
+  ],
 };

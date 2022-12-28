@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CarouselProvider } from "pure-react-carousel";
 import React from "react";
+import { product } from "../../interface";
 import Brand from "../Common/Brand";
 import Category from "../Common/Category";
 import Section from "../Common/Section";
@@ -17,9 +18,11 @@ const categories = [
   { icon: "ic:baseline-fitness-center", text: "fitness" },
 ];
 
-const products = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+interface Props {
+  products: product[];
+}
 
-const Home = () => {
+const Home: React.FC<Props> = ({ products }) => {
   return (
     <div className=" my-6 lg:mt-[65px] space-y-8 xl:space-y-10">
       {/* Slide Show */}
@@ -54,7 +57,7 @@ const Home = () => {
       </div>
 
       {/*Top Selling Items */}
-      <Products products={products} title="Top Selling Items" />
+      {products && <Products products={products} title="Top Selling Items" />}
 
       {/* Sections */}
       <div className="bg-grayThree !mt-6 py-10">
@@ -107,7 +110,9 @@ const Home = () => {
       </div>
 
       {/* Recently Viewd Item */}
-      <Products products={products} title="Recently Viewed items" />
+      {products && (
+        <Products products={products} title="Recently Viewed items" />
+      )}
     </div>
   );
 };
