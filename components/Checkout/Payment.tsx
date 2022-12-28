@@ -47,6 +47,8 @@ const Payment = () => {
     }
   };
 
+  let PaystackPop: any;
+
   const handlePay = () => {
     let handler = PaystackPop.setup({
       key: "pk_test_3c12528ec7390e552ff520c320c1a287564218e5", // Replace with your public key
