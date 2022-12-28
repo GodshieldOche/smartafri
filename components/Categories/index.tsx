@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import { dummyProducts } from "../../data";
 import Category from "../Common/Category";
 import Pagination from "../Common/Pagination";
 import Products from "../Products";
@@ -93,7 +94,7 @@ const Categories = () => {
           </div>
         </div>
       </div>
-      <Products products={products} title="Recently Viewed items" />
+      <Products products={dummyProducts} title="Recently Viewed items" />
     </div>
   );
 };
