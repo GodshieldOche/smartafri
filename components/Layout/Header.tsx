@@ -69,7 +69,7 @@ const Header: React.FC<{ user: currentUser }> = ({ user }) => {
           />
         </div>
 
-        <div className="col-span-3 w-full flex justify-between items-center space-x-8">
+        <div className="col-span-3 flex justify-end items-center space-x-16">
           <IconText
             icon="clarity:shopping-cart-line"
             text="Cart"
