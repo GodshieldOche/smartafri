@@ -43,7 +43,7 @@ const Address = () => {
         }) => (
           <Form autoComplete="off" className="">
             <div className="w-full space-y-8">
-              <div className="flex flex-col space-y-8 lg:flex-row lg:justify-between lg:items-start lg:space-x-6 ">
+              <div className="flex flex-col space-y-8 lg:flex-row lg:space-y-0 lg:justify-between lg:items-start lg:space-x-6 ">
                 <Input
                   label="Full Name"
                   name="fullName"
