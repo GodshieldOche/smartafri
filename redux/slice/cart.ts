@@ -22,6 +22,13 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    clearCart: (state) => {
+      const cart: cart[] = [];
+      if (typeof window !== "undefined") {
+        localStorage.setItem("cart", JSON.stringify(cart));
+      }
+      state.data = cart;
+    },
     addToCart: (state, { payload }) => {
       const cart = [...state.data];
       cart.push(payload);
@@ -73,7 +80,7 @@ export const cartSlice = createSlice({
 });
 
 // // Other code such as selectors can use the imported `RootState` type
-export const { addToCart, increment, decrement, deleteFromCart } =
+export const { clearCart, addToCart, increment, decrement, deleteFromCart } =
   cartSlice.actions;
 
 export default cartSlice.reducer;

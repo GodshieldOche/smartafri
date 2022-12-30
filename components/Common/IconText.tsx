@@ -23,7 +23,7 @@ const IconText: React.FC<Props> = ({ icon, text, action }) => {
     >
       <div className="relative">
         <Icon icon={icon} className="!text-primaryOne !text-xl" />
-        {text === "Cart" && (
+        {text === "Cart" && quantity !== 0 && (
           <div className="absolute -top-[10px] -right-2 h-5 w-5 rounded-full bg-secondaryOne border-2 border-white p-1  flex items-center justify-center">
             <h1 className="text-[11px] lg:text-xs text-white font-medium">
               {quantity}

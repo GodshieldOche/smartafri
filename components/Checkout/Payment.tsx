@@ -3,9 +3,11 @@ import { Formik, Form } from "formik";
 import * as yup from "yup";
 import Input from "../Formik/input";
 import Button from "../Common/Button";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Dropdown from "../Formik/Dropdown";
 import axios from "axios";
+import useAppDispatch from "../../hooks/useDispatch";
+import { usePaystackPayment } from "react-paystack";
 
 const cardSchema = yup.object().shape({
   cardNumber: yup.string().required("This field is required."),
@@ -21,13 +23,22 @@ interface cardValues {
 
 const Payment = () => {
   const [method, setMethod] = useState("Debit Card");
-
   const router = useRouter();
+
   const cardInitValues: cardValues = {
     cardNumber: "",
     cvv: "",
     expiryDate: "",
   };
+
+  const config = {
+    reference: new Date().getTime().toString(),
+    email: "uniccongroup@gmail.com",
+    amount: 5000 * 100,
+    publicKey: "pk_test_3c12528ec7390e552ff520c320c1a287564218e5",
+  };
+
+  const initializePayment = usePaystackPayment(config);
 
   const verifyPayment = async (reference: string) => {
     try {
@@ -47,28 +58,14 @@ const Payment = () => {
     }
   };
 
-  let PaystackPop: any;
-
-  const handlePay = () => {
-    let handler = PaystackPop.setup({
-      key: "pk_test_3c12528ec7390e552ff520c320c1a287564218e5", // Replace with your public key
-      email: "goddyartz@gmail.com",
-      amount: 5000 * 100,
-      ref: "" + Math.floor(Math.random() * 1000000000 + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
-      // label: "Optional string that replaces customer email"
-      onClose: function () {
-        alert("Window closed.");
-      },
-      callback: function (response: any) {
-        verifyPayment(response.reference).then((data) => {
-          if (data.status === true) {
-            router.push("/dashboard/orders");
-          }
-        });
-      },
+  const onSuccess = (reference?: any) => {
+    verifyPayment(reference.reference!).then((data: any) => {
+      data.status && router.push("/dashboard/orders");
     });
+  };
 
-    handler.openIframe();
+  const onClose = () => {
+    console.log("closed");
   };
 
   return (
@@ -101,7 +98,7 @@ const Payment = () => {
                 value={method}
               />
               {method === "Debit Card" && (
-                <div className="flex justify-between items-start space-x-6 ">
+                <div className="flex flex-col space-y-8 lg:justify-between lg:items-start lg:space-x-6 ">
                   <Input
                     label="Card Number"
                     name="cardNumber"
@@ -139,7 +136,11 @@ const Payment = () => {
               )}
             </div>
             <div className="w-full !mt-14">
-              <Button text="Proceed" width="w-full" action={handlePay} />
+              <Button
+                text="Proceed"
+                width="w-full"
+                action={() => initializePayment(onSuccess, onClose)}
+              />
             </div>
           </Form>
         )}

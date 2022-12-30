@@ -8,6 +8,7 @@ import sessionReducer from "./slice/auth/session";
 import vendorSignInReducer from "./slice/vendor/vendorSignin";
 import productsReducer from "./slice/web/products";
 import productReducer from "./slice/web/product";
+import payReducer from "./slice/user/pay";
 
 const makeStore = () =>
   configureStore({
@@ -20,6 +21,7 @@ const makeStore = () =>
       signin: signinReducer,
       session: sessionReducer,
       vendorSignIn: vendorSignInReducer,
+      pay: payReducer,
     },
   });
 

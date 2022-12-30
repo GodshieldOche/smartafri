@@ -14,7 +14,6 @@ export default function HomePage() {
       <Checkout>
         <Payment />
       </Checkout>
-      <Script src="https://js.paystack.co/v1/inline.js" />
     </div>
   );
 }

@@ -5,7 +5,12 @@ import Image from "next/image";
 import { Icon } from "@iconify/react";
 import { cart } from "../../interface";
 import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
-import { decrement, deleteFromCart, increment } from "../../redux/slice/cart";
+import {
+  clearCart,
+  decrement,
+  deleteFromCart,
+  increment,
+} from "../../redux/slice/cart";
 
 const CartCard: React.FC<{
   item: cart;
@@ -64,6 +69,7 @@ const Cart = () => {
   const [total, setTotal] = React.useState(0);
 
   const router = useRouter();
+  const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart.data);
 
   React.useEffect(() => {
@@ -74,7 +80,7 @@ const Cart = () => {
   return (
     <div className="!mt-[100px] lg:!mt-[120px] contain grid grid-cols-12 gap-x-5  items-start   ">
       <div
-        className={`col-span-12 order-last lg:order-first lg:!col-span-3 lg:px-4 py-8 lg:bg-grayThree flex-col space-y-10  `}
+        className={`col-span-12 order-last lg:order-first lg:!col-span-3 lg:px-3 py-8 lg:bg-grayThree flex-col space-y-10  `}
       >
         <div className="flex justify-between items-center">
           <h3 className="text-sm lg:text-base text-grayOne font-medium ">
@@ -88,7 +94,11 @@ const Cart = () => {
           text="Check Out"
           width="w-full"
           color="bg-primaryTwo"
-          action={() => router.push("/checkout/address")}
+          action={() => {
+            dispatch(clearCart());
+            router.push("/checkout/address");
+          }}
+          disabled={quantity === 0}
         />
       </div>
       <div
