@@ -26,7 +26,7 @@ export const postSignin: any = createAsyncThunk(
           },
         }
       );
-      console.log(data);
+      console.log(data.data.token);
       dispatch(storeSession(data.data.token));
       return data;
     } catch (error: any) {

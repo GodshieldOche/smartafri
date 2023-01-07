@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import menuReducer from "./slice/menu";
 import cartReducer from "./slice/cart";
+import userCartReducer from "./slice/user/cart";
 import registerReducer from "./slice/auth/register";
 import signinReducer from "./slice/auth/signin";
 import sessionReducer from "./slice/auth/session";
@@ -15,6 +16,7 @@ const makeStore = () =>
     reducer: {
       menu: menuReducer,
       cart: cartReducer,
+      userCart: userCartReducer,
       products: productsReducer,
       product: productReducer,
       register: registerReducer,

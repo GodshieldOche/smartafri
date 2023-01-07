@@ -10,8 +10,9 @@ import Dropdown from "../Common/Dropdown";
 import { useRouter } from "next/router";
 import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
 import { setMenuState } from "../../redux/slice/menu";
-import { currentUser } from "../../interface";
-import { logout } from "../../redux/slice/auth/session";
+import { cart, currentUser } from "../../interface";
+import { getSession, logout } from "../../redux/slice/auth/session";
+import { clearCart, getCart, postAddToCart } from "../../redux/slice/cart";
 
 const array = [
   "Best Sellers",
@@ -28,10 +29,38 @@ const Header: React.FC<{ user: currentUser }> = ({ user }) => {
   const dispatch = useAppDispatch();
   const { menuState } = useAppSelector((state) => state.menu);
 
+  const populateCart = async (token: string, cart: cart[]) => {
+    cart.forEach((item) => {
+      dispatch(
+        postAddToCart({
+          token,
+          product_id: item.product_id,
+          quantity: item.quantity,
+        })
+      );
+    });
+  };
+
   React.useEffect(() => {
     if (!user) {
       localStorage.removeItem("user");
     }
+    dispatch(getSession()).then((res: any) => {
+      const token = res.payload.token;
+      const localCart = localStorage.getItem("cart");
+      if (token && localCart) {
+        dispatch(clearCart());
+        populateCart(token, JSON.parse(localCart)).then(() => {
+          dispatch(getCart(token)).then((res: any) => {
+            localStorage.removeItem("cart");
+          });
+        });
+      } else if (token && !localCart) {
+        dispatch(getCart(token)).then((res: any) => {
+          localStorage.removeItem("cart");
+        });
+      }
+    });
   }, []);
 
   const name = user?.full_name?.split(" ")[0];

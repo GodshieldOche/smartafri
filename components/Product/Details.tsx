@@ -3,14 +3,17 @@ import { useRouter } from "next/router";
 import React from "react";
 import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
 import { cart, product } from "../../interface";
-import { addToCart } from "../../redux/slice/cart";
+import { getSession } from "../../redux/slice/auth/session";
+import { addToCart, postAddToCart } from "../../redux/slice/cart";
 import Button from "../Common/Button";
 import Rating from "../Common/Rating";
 
 const Details: React.FC<{ product: product }> = ({ product }) => {
   const [quantity, setQuantity] = React.useState(1);
+  const [token, setToken] = React.useState("");
   const [inCart, setInCart] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
+  const [isLoggedIn, setisLoggedIn] = React.useState(false);
 
   const cart = useAppSelector((state) => state.cart.data);
   const router = useRouter();
@@ -19,10 +22,18 @@ const Details: React.FC<{ product: product }> = ({ product }) => {
   React.useEffect(() => {
     setLoading(true);
     const inCart = cart.find(
-      (item) => item.id.toString() === product.id.toString()
+      (item) => item.product_id.toString() === product.id.toString()
     );
     setInCart(inCart ? true : false);
     setLoading(false);
+  }, [cart]);
+
+  React.useEffect(() => {
+    dispatch(getSession()).then((res: any) => {
+      const token = res.payload.token;
+      setToken(token);
+      setisLoggedIn(token ? true : false);
+    });
   }, []);
 
   const handleIncrement = () => {
@@ -40,19 +51,26 @@ const Details: React.FC<{ product: product }> = ({ product }) => {
   const handleAddToCart = () => {
     setLoading(true);
 
-    const item = {
-      name: product.name,
-      seller: product.brand,
-      price: product.price,
+    const item: cart = {
       quantity: quantity,
-      id: product.id,
-      max: product.quantity,
+      id: cart.length,
+      product: product,
+      product_id: product.id,
     };
 
-    dispatch(addToCart(item));
+    if (!isLoggedIn) {
+      dispatch(addToCart(item));
+      setInCart(true);
+      setLoading(false);
+      return;
+    }
 
-    setInCart(true);
-    setLoading(false);
+    dispatch(postAddToCart({ token, product_id: product.id, quantity })).then(
+      () => {
+        setInCart(true);
+        setLoading(false);
+      }
+    );
   };
 
   const handleGoToCart = () => {

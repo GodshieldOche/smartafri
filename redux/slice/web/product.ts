@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { product } from "../../../interface";
 
 export type error = {
   errors: {}[];
@@ -8,7 +9,7 @@ export type error = {
 // Define a type for the slice state
 export interface authState {
   loading: boolean;
-  data: object;
+  data?: product;
   error: object | null;
 }
 
@@ -40,7 +41,6 @@ export const getProduct: any = createAsyncThunk(
 // Define the initial state using that type
 const initialState: authState = {
   loading: true,
-  data: {},
   error: null,
 };
 

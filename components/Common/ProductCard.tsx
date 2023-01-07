@@ -6,11 +6,14 @@ import Rating from "./Rating";
 import { cart, product } from "../../interface";
 import { useRouter } from "next/router";
 import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
-import { addToCart } from "../../redux/slice/cart";
+import { addToCart, postAddToCart } from "../../redux/slice/cart";
+import { getSession } from "../../redux/slice/auth/session";
 
 const ProductCard: React.FC<{ product: product }> = ({ product }) => {
   const [showAddToCart, setShowAddToCart] = useState(false);
   const [inCart, setInCart] = React.useState(false);
+  const [token, setToken] = React.useState("");
+  const [isLoggedIn, setisLoggedIn] = React.useState(false);
 
   const cart = useAppSelector((state) => state.cart.data);
 
@@ -19,25 +22,39 @@ const ProductCard: React.FC<{ product: product }> = ({ product }) => {
 
   React.useEffect(() => {
     const inCart = cart.find(
-      (item) => item.id.toString() === product.id.toString()
+      (item) => item.product_id.toString() === product.id.toString()
     );
 
     setInCart(inCart ? true : false);
   }, [cart]);
 
+  React.useEffect(() => {
+    dispatch(getSession()).then((res: any) => {
+      const token = res.payload.token;
+      setToken(token);
+      setisLoggedIn(token ? true : false);
+    });
+  }, []);
+
   const handleAddToCart = () => {
-    const item = {
-      name: product.name,
-      seller: product.brand,
-      price: product.price,
+    const item: cart = {
       quantity: 1,
-      id: product.id,
-      max: product.quantity,
+      id: cart.length,
+      product: product,
+      product_id: product.id,
     };
 
-    dispatch(addToCart(item));
+    if (!isLoggedIn) {
+      dispatch(addToCart(item));
+      setInCart(true);
+      return;
+    }
 
-    setInCart(true);
+    dispatch(
+      postAddToCart({ token, product_id: product.id, quantity: 1 })
+    ).then(() => {
+      setInCart(true);
+    });
   };
 
   const handleGoToCart = () => {

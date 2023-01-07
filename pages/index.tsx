@@ -21,18 +21,17 @@ export default function HomePage({ products }: Props) {
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({}) => {
-      await store.dispatch(getProducts());
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) =>
+//     async ({}) => {
+//       await store.dispatch(getProducts());
 
-      const products = store.getState().products.data;
+//       const products = store.getState().products.data;
 
-      console.log("Products", products);
-      return {
-        props: {
-          products,
-        },
-      };
-    }
-);
+//       return {
+//         props: {
+//           products,
+//         },
+//       };
+//     }
+// );

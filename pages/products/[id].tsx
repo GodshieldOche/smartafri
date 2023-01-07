@@ -17,17 +17,17 @@ export default function HomePage({ product }: { product: product }) {
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps(
-  (store) =>
-    async ({ query }) => {
-      await store.dispatch(getProduct(query.id));
+// export const getServerSideProps = wrapper.getServerSideProps(
+//   (store) =>
+//     async ({ query }) => {
+//       await store.dispatch(getProduct(query.id));
 
-      const product = store.getState().product.data;
+//       const product = store.getState().product.data;
 
-      return {
-        props: {
-          product,
-        },
-      };
-    }
-);
+//       return {
+//         props: {
+//           product,
+//         },
+//       };
+//     }
+// );

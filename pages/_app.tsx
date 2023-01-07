@@ -13,7 +13,7 @@ export default function MyApp({ Component, ...rest }: AppProps) {
 
   return (
     <Provider store={store}>
-      <Layout currentUser={props.pageProps.currentUser}>
+      <Layout currentUser={props?.pageProps?.currentUser}>
         <NextNprogress color="#4082E6" />
         <Component {...props.pageProps} />
       </Layout>

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { CarouselProvider } from "pure-react-carousel";
 import React from "react";
+import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
 import { product } from "../../interface";
+import { getProducts } from "../../redux/slice/web/products";
 import Brand from "../Common/Brand";
 import Category from "../Common/Category";
 import Section from "../Common/Section";
@@ -22,7 +24,12 @@ interface Props {
   products: product[];
 }
 
-const Home: React.FC<Props> = ({ products }) => {
+const Home: React.FC<Props> = () => {
+  const dispatch = useAppDispatch();
+  const products = useAppSelector((state) => state.products.data);
+  React.useEffect(() => {
+    dispatch(getProducts());
+  }, []);
   return (
     <div className=" my-6 lg:mt-[65px] space-y-8 xl:space-y-10">
       {/* Slide Show */}

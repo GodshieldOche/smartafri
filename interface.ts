@@ -65,10 +65,8 @@ export type product = {
 };
 
 export type cart = {
-  name: string;
-  seller: string;
+  product: product;
   quantity: number;
-  price: number;
   id: number;
-  max: number;
+  product_id: number;
 };

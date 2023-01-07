@@ -27,8 +27,6 @@ const ProductCarousel: React.FC<Props> = ({ products }) => {
     });
   };
 
-  console.log(products);
-
   return (
     <div className="w-full h-full relative p-6 bg-grayThree">
       <div
