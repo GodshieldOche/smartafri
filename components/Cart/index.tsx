@@ -15,6 +15,7 @@ import {
   updateQuantity,
 } from "../../redux/slice/cart";
 import { getSession } from "../../redux/slice/auth/session";
+import { setRedirect } from "../../redux/slice/menu";
 
 const CartCard: React.FC<{
   item: cart;
@@ -121,6 +122,15 @@ const Cart = () => {
     });
   }, [cart]);
 
+  const handleCheckOut = () => {
+    if (token) {
+      return router.push("/checkout/address");
+    }
+
+    dispatch(setRedirect("/checkout/address"));
+    router.push("/auth/signin");
+  };
+
   return (
     <div className="!mt-[100px] lg:!mt-[120px] contain grid grid-cols-12 gap-x-5  items-start   ">
       <div
@@ -138,10 +148,7 @@ const Cart = () => {
           text="Check Out"
           width="w-full"
           color="bg-primaryTwo"
-          action={() => {
-            dispatch(clearCart());
-            router.push("/checkout/address");
-          }}
+          action={handleCheckOut}
           disabled={quantity === 0}
         />
       </div>

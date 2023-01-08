@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as yup from "yup";
 import Button from "../Common/Button";
 import Input from "../Formik/input";
 import { useRouter } from "next/router";
-import useAppDispatch from "../../hooks/useDispatch";
+import useAppDispatch, { useAppSelector } from "../../hooks/useDispatch";
 import { postSignin, reset } from "../../redux/slice/auth/signin";
 import { toast } from "react-toastify";
 
@@ -29,6 +29,7 @@ const SignIn = () => {
 
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const { redirect } = useAppSelector((state) => state.menu);
 
   const handleRouting = () => {
     router.push("/auth/register");
@@ -56,7 +57,9 @@ const SignIn = () => {
             dispatch(reset());
             setSubmitting(false);
             setTimeout(() => {
-              location.reload();
+              const origin = location.origin;
+              const newUrl: any = origin + redirect;
+              location = newUrl as Location;
             }, 1500);
           });
         }}
