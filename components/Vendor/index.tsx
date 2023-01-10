@@ -12,15 +12,16 @@ interface Props {
 
 const VendorLayout: React.FC<Props> = ({ children }) => {
   const router = useRouter();
+
   return (
     <div className="w-full h-full">
       {!router.pathname.includes("vendor/auth/") ? (
-        <div className="grid grid-cols-5 w-full h-full ">
-          <div className="col-span-1 hidden lg:flex  bg-[#252A2F] h-screen overflow-hidden  flex-col items-center pt-6 space-y-12 ">
+        <div className=" w-full h-full flex  ">
+          <div className="w-[20%] fixed left-0 top-0 bottom-0 hidden lg:flex  bg-[#252A2F]  overflow-hidden  flex-col items-center pt-6 space-y-12 ">
             <Image className="cursor-pointer" src={main} priority alt="logo" />
             <DashLinks />
           </div>
-          <div className=" col-span-5 lg:col-span-4 w-full h-full relative max-h-screen scroller overflow-y-auto">
+          <div className=" w-[100%] lg:ml-[20%] lg:w-[80%] h-full relative max-h-screen scroller overflow-y-auto">
             {children}
           </div>
           <Footer />

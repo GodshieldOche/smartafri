@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import React from "react";
+import React, { useEffect } from "react";
 import DashHeader from "../DashHeader";
 import Chart from "./Chart";
 
@@ -22,6 +22,16 @@ export const Box: React.FC<Props> = ({ icon, name, value }) => {
 };
 
 const VendorHome = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    scrollToTop();
+    console.log("yeah");
+  }, []);
   return (
     <div className="w-full ">
       <DashHeader page="Home" />
