@@ -35,7 +35,7 @@ const Login = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full space-y-8">
+    <div className="w-full space-y-8 pb-16">
       <div className="w-full space-y-2">
         <h1 className=" vendorHeading  ">Welcome Back</h1>
         <h2 className="text-sm lg:text-base ">
