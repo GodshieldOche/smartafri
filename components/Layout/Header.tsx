@@ -69,7 +69,9 @@ const Header: React.FC<{ user: currentUser }> = ({ user }) => {
     dispatch(logout()).then((res: any) => {
       console.log(res);
       localStorage.removeItem("user");
-      router.push("/vendor/auth/signin");
+      const origin = location.origin;
+      const newUrl: any = origin + "/vendor/auth/signin";
+      location = newUrl as Location;
     });
   };
 
