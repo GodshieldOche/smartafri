@@ -39,20 +39,34 @@ const VendorInput: React.FC<Props> = ({
   return (
     <div className="space-y-2">
       <label htmlFor={name}>
-        <h3 className={`text-sm lg:text-base text-grayOne`}>{label}</h3>
+        <h3
+          className={`${
+            active ? "text-primaryOne" : "text-grayFour"
+          } text-sm lg:text-base`}
+        >
+          {label}
+        </h3>
       </label>
-      <div className="flex relative border px-4  md:px-[18px] justify-center rounded-[5px]  items-center space-x-3">
-        {icon && <Icon icon={icon} className="!text-xl !text-grayOne " />}
+      <div
+        className={`flex relative border px-4  md:px-[18px] justify-center rounded-[5px]   items-center space-x-3 
+      ${active ? "!text-primaryOne !border-primaryOne/30" : "!text-grayOne"}`}
+      >
+        {icon && <Icon icon={icon} className="!text-xl " />}
         <Field
           id={name}
           name={name}
           type={inputType}
           value={value}
-          className="w-full text-sm py-[15px] outline-none text-grayOne"
+          className={`w-full text-sm autofill:bg-white py-[15px] outline-none   `}
           onChange={handleChange}
           autoComplete="off"
           aria-autocomplete="none"
           placeholder={placeholder}
+          onFocus={() => setActive(true)}
+          onBlur={(e: React.FocusEvent) => {
+            setActive(false);
+            handleBlur(e);
+          }}
         />
         {["password", "confirmPassword"].includes(name) && (
           <div className="absolute h-full top-0 bottom-0 right-4 flex flex-col justify-center">

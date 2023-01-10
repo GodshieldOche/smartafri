@@ -10,7 +10,7 @@ const Register = () => {
   const router: NextRouter = useRouter();
 
   return (
-    <div className="w-full space-y-16">
+    <div className="w-full space-y-16 pb-16">
       <div className="w-full space-y-2">
         <h1 className="vendorHeading ">Hello There</h1>
         <h2 className="text-sm lg:text-base ">

@@ -52,7 +52,7 @@ const InputV2: React.FC<Props> = ({
           name={name}
           type={inputType}
           value={value}
-          className={`input-field !border-[#CFD4D9] ${
+          className={`input-field autofill:bg-white !border-[#CFD4D9] ${
             active ? "!text-primaryOne !border-primaryOne/30" : "text-grayFour"
           }  ${errors && touched ? "!border-secondaryOne" : ""} `}
           onChange={handleChange}
