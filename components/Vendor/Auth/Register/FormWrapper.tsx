@@ -112,7 +112,7 @@ const FormWrapper = () => {
                   icon="material-symbols:check-small-rounded"
                 />
               ) : (
-                <h1 className="text-sm md:text-lg text-white font-medium ">
+                <h1 className="text-xs md:text-lg text-white font-medium ">
                   {item}
                 </h1>
               )}

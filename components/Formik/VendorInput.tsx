@@ -51,6 +51,7 @@ const VendorInput: React.FC<Props> = ({
           className="w-full text-sm py-[15px] outline-none text-grayOne"
           onChange={handleChange}
           autoComplete="off"
+          aria-autocomplete="none"
           placeholder={placeholder}
         />
         {["password", "confirmPassword"].includes(name) && (

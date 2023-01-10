@@ -57,6 +57,7 @@ const Input: React.FC<Props> = ({
           }  ${errors && touched ? "!border-secondaryOne" : ""} `}
           onChange={handleChange}
           autoComplete="off"
+          aria-autocomplete="none"
           placeholder={placeholder}
           onFocus={() => setActive(true)}
           onBlur={(e: React.FocusEvent) => {

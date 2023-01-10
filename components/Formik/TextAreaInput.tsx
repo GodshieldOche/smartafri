@@ -36,6 +36,7 @@ const TextAreaInput: React.FC<Props> = ({
           className="w-full text-sm py-[18px] outline-none text-grayOne"
           onChange={handleChange}
           autoComplete="off"
+          aria-autocomplete="none"
           placeholder={placeholder}
         />
       </div>

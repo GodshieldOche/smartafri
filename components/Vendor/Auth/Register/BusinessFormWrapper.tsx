@@ -82,7 +82,7 @@ const BusinessFormWrapper = () => {
           Get Started with your SmartAfri Account
         </h2>
       </div>
-      <div className="w-full px-2 md:px-[50px]">
+      <div className="w-full px-2 md:px-[45px]">
         <div ref={progress} className="progress-bar !overflow-hidden">
           <div
             ref={slider}
@@ -91,7 +91,7 @@ const BusinessFormWrapper = () => {
           {[1, 2, 3, 4].map((item, index) => (
             <div
               key={item}
-              className={`progress-step w-[32px] h-[32px] md:w-[45px] md:h-[45px] rounded-full flex justify-center items-center
+              className={`progress-step w-[32px] h-[32px] md:w-[48px] md:h-[48px] rounded-full flex justify-center items-center
               ${
                 index === page || index < page
                   ? "bg-primaryOne"
