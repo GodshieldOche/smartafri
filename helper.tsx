@@ -11,5 +11,5 @@ export const clearToken = async (appContext: any) => {
     path: "/",
   });
 
-  appContext.ctx.res.setHeader("Set-Cookie", serialised);
+  appContext?.ctx?.res?.setHeader("Set-Cookie", serialised);
 };

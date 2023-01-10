@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import * as yup from "yup";
 import VendorInput from "../../../Formik/VendorInput";
 import Buttonv2 from "../../../Common/Butonv2";
+import TextButton from "../../../Common/TextButton";
 import { useRouter } from "next/router";
 import useAppDispatch from "../../../../hooks/useDispatch";
 import {
@@ -31,11 +32,13 @@ const Login = () => {
   };
 
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   return (
     <div className="w-full space-y-8">
       <div className="w-full space-y-2">
-        <h1 className="headingOne !text-primaryOne  ">Welcome Back</h1>
-        <h2 className="text-base ">
+        <h1 className=" vendorHeading  ">Welcome Back</h1>
+        <h2 className="text-sm lg:text-base ">
           Sign in to get access to your SmartAfri Account
         </h2>
       </div>
@@ -95,25 +98,37 @@ const Login = () => {
               errors={errors.password}
               touched={touched.password}
             />
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="stay"
-                name="stay"
-                // onChange={() => setStay(!stay)}
-                className="accent-primaryOne"
-              />
-              <label htmlFor="stay" className="text-sm text-grayOne">
-                Remember me
-              </label>
+            <div className="flex justify-end md:justify-between items-center">
+              <div className="hidden md:flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="stay"
+                  name="stay"
+                  // onChange={() => setStay(!stay)}
+                  className="accent-primaryOne"
+                />
+                <label
+                  htmlFor="stay"
+                  className="text-[13px] sm:text-sm pt-[2px] text-grayOne"
+                >
+                  Remember me
+                </label>
+              </div>
+              <span className="text-[13px] sm:text-sm text-black cursor-pointer">
+                Forgot Password?
+              </span>
             </div>
 
-            <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+            <div className="w-full !mt-10 lg:!mt-16 flex flex-col justify-between items-center space-y-8">
               <Buttonv2
                 text="Sign In"
                 width="w-full"
                 action={handleSubmit}
                 loading={isSubmitting}
+              />
+              <TextButton
+                text="Create Account"
+                action={() => router.push("/vendor/auth/register")}
               />
             </div>
           </Form>

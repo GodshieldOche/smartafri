@@ -50,6 +50,10 @@
   @apply text-base lg:text-lg xl:text-xl font-semibold text-black;
 }
 
+.vendorHeading {
+  @apply xl:text-xl font-semibold !text-primaryOne text-lg;
+}
+
 .paragraph {
   @apply text-sm lg:text-base leading-[26px] lg:leading-8;
 }
@@ -87,14 +91,14 @@
   position: absolute;
   background-color: #4082e6;
   border-radius: 3px;
-  padding: 8px 24px;
+  padding: 6px 24px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
   font-size: 12px;
   color: white;
-  top: 22%;
+  top: 20%;
 }
 .custom-file-input:hover::before {
   border-color: black;
@@ -112,6 +116,6 @@ select {
 }
 
 input[type="checkbox"] {
-  transform: scale(1.3);
+  transform: scale(1.1);
   background-color: #4082e6;
 }

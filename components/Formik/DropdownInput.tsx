@@ -38,13 +38,17 @@ const DropdownInput: React.FC<Props> = ({
       }}
     >
       <label htmlFor={name} className=" ">
-        <h3 className={`${active ? "text-primaryOne" : "text-grayFour"}`}>
+        <h3
+          className={`${
+            active ? "text-primaryOne" : "text-grayOne"
+          } text-sm lg:text-base `}
+        >
           {label}
         </h3>
       </label>
       <div className=" w-full h-full relative">
-        {icon && <Icon icon={icon} className="!text-2xl !text-grayOne " />}
-        <div className="w-full py-4  px-[18px] border rounded-[5px] outline-none text-grayOne ">
+        <div className="w-full flex items-center py-[15px] px-4 space-x-3  md:px-[18px] border rounded-[5px] outline-none text-grayOne ">
+          {icon && <Icon icon={icon} className="  !text-xl !text-grayOne " />}
           <h3 className="text-sm">{value}</h3>
         </div>
         <div className="absolute h-full top-0 bottom-0 my-auto right-3 flex flex-col justify-center">

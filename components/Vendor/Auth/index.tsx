@@ -9,8 +9,24 @@ interface Props {
 const VendorAuthLayout: React.FC<Props> = ({ children }) => {
   return (
     <div className="w-full h-full overflow-hidden grid grid-cols-12 ">
-      <div className="col-span-12 lg:col-span-5 lg:pl-12 py-14 w-full flex flex-col items-center space-y-14 overflow-y-auto scroller">
-        <div className="hidden md:block">
+      <div className="col-span-12 md:hidden w-full h-[357px] relative  ">
+        <Image
+          src="https://res.cloudinary.com/dk6uhtgvo/image/upload/v1673321237/heroMobile_wvk88b.png"
+          fill
+          priority
+          alt="image"
+        />
+      </div>
+      <div className="hidden col-span-12 md:block lg:hidden w-full h-[400px] relative  ">
+        <Image
+          src="https://res.cloudinary.com/drck33djn/image/upload/v1669287601/Frame_31939_1_pgyty3.png"
+          fill
+          priority
+          alt="image"
+        />
+      </div>
+      <div className="col-span-12 lg:col-span-5 lg:pl-12 lg:py-14 px-4 sm:px-10 !mt-6 lg:mt-0 lg:px-0 w-full flex flex-col items-center lg:space-y-14 overflow-y-auto scroller">
+        <div className=" hidden lg:block">
           <Image className="cursor-pointer" src={logo} priority alt="logo" />
         </div>
         {children}

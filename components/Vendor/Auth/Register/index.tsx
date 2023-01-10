@@ -12,8 +12,10 @@ const Register = () => {
   return (
     <div className="w-full space-y-16">
       <div className="w-full space-y-2">
-        <h1 className="headingOne !text-primaryOne ">Hello There</h1>
-        <h2 className="text-base ">Get Started with your SmartAfri Account</h2>
+        <h1 className="vendorHeading ">Hello There</h1>
+        <h2 className="text-sm lg:text-base ">
+          Get Started with your SmartAfri Account
+        </h2>
       </div>
       <form className="flex items-center space-x-20">
         <RadioButton
@@ -29,7 +31,7 @@ const Register = () => {
           value="business"
         />
       </form>
-      <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+      <div className="hidden w-full !mt-16 md:flex justify-between items-center space-x-6">
         <OutlineBtn
           text="Go Back"
           width="w-full"
@@ -41,14 +43,16 @@ const Register = () => {
           action={() => router.push(`/vendor/auth/register/${selectedOption}`)}
         />
       </div>
-      {/* <Buttonv2
-        text="Next"
-        width="w-full"
-        action={() => router.push(`/vendor/auth/register/${selectedOption}`)}
-      />
-      <div className="w-full flex justify-center items-center !mt-6">
-        <TextButton text="Go Back" />
-      </div> */}
+      <div className="md:hidden w-full">
+        <Buttonv2
+          text="Next"
+          width="w-full"
+          action={() => router.push(`/vendor/auth/register/${selectedOption}`)}
+        />
+        <div className="w-full flex justify-center items-center !mt-6">
+          <TextButton text="Go Back" />
+        </div>
+      </div>
     </div>
   );
 };

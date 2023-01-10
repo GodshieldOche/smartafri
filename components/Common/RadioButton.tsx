@@ -25,7 +25,7 @@ const RadioButton: React.FC<Props> = ({
       />
       <label
         htmlFor="age1"
-        className={`text-lg  font-medium 
+        className={`text-base lg:text-lg  font-medium 
       ${selectedOption === value ? "text-primaryOne" : "text-grayOne"} `}
       >
         {name}

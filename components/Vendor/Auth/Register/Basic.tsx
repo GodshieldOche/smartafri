@@ -150,7 +150,7 @@ const Basic: React.FC<RegisterProps> = ({
                 touched={touched.means_of_id}
                 des="Drivers License, Intl Passport, NIN"
               />
-              <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+              <div className="w-full  !mt-12 lg:!mt-16 flex justify-between items-center  space-x-4 md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"
@@ -237,7 +237,7 @@ const Basic: React.FC<RegisterProps> = ({
                 errors={errors.business_role}
                 touched={touched.business_role}
               />
-              <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+              <div className="w-full !mt-12 lg:!mt-16 flex justify-between items-center space-x-4 md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"

@@ -77,10 +77,12 @@ const BusinessFormWrapper = () => {
   return (
     <div className="w-full space-y-8">
       <div className="w-full space-y-2">
-        <h1 className="headingOne !text-primaryOne  ">Hello There</h1>
-        <h2 className="text-base ">Get Started with your SmartAfri Account</h2>
+        <h1 className="vendorHeading  ">Hello There</h1>
+        <h2 className="text-sm lg:text-base ">
+          Get Started with your SmartAfri Account
+        </h2>
       </div>
-      <div className="w-full px-[50px]">
+      <div className="w-full px-2 md:px-[50px]">
         <div ref={progress} className="progress-bar !overflow-hidden">
           <div
             ref={slider}
@@ -89,7 +91,7 @@ const BusinessFormWrapper = () => {
           {[1, 2, 3, 4].map((item, index) => (
             <div
               key={item}
-              className={`progress-step w-[45px] h-[45px] rounded-full flex justify-center items-center
+              className={`progress-step w-[32px] h-[32px] md:w-[45px] md:h-[45px] rounded-full flex justify-center items-center
               ${
                 index === page || index < page
                   ? "bg-primaryOne"
@@ -102,20 +104,22 @@ const BusinessFormWrapper = () => {
                   icon="material-symbols:check-small-rounded"
                 />
               ) : (
-                <h1 className="text-base text-white font-semibold ">{item}</h1>
+                <h1 className="text-xs md:text-base text-white font-semibold ">
+                  {item}
+                </h1>
               )}
             </div>
           ))}
         </div>
       </div>
-      <div className="w-full flex justify-between px-[36px] !mt-3 items-center">
+      <div className="w-full flex justify-between md:px-[36px] !mt-3 items-center">
         {progressText.map((item, index) => (
           <h1
             className={` ${
               index === page || index < page
                 ? "text-primaryOne"
                 : "text-grayOne"
-            }  text-[13px] text-center`}
+            }  text-[10px]  md:text-[13px] text-center`}
             key={index}
           >
             {item}

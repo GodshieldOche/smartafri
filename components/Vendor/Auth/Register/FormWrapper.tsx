@@ -85,10 +85,12 @@ const FormWrapper = () => {
   return (
     <div className="w-full space-y-8">
       <div className="w-full space-y-2">
-        <h1 className="headingOne !text-primaryOne  ">Hello There</h1>
-        <h2 className="text-base ">Get Started with your SmartAfri Account</h2>
+        <h1 className="vendorHeading  ">Hello There</h1>
+        <h2 className="text-sm lg:text-base ">
+          Get Started with your SmartAfri Account
+        </h2>
       </div>
-      <div className="w-full px-[60px]">
+      <div className="w-full px-2 md:px-[60px]">
         <div ref={progress} className="progress-bar !overflow-hidden">
           <div
             ref={slider}
@@ -97,7 +99,7 @@ const FormWrapper = () => {
           {[1, 2, 3].map((item, index) => (
             <div
               key={item}
-              className={`progress-step w-[48px] h-[48px] rounded-full flex justify-center items-center
+              className={`progress-step w-[32px] h-[32px] md:w-[48px] md:h-[48px] rounded-full flex justify-center items-center
               ${
                 index === page || index < page
                   ? "bg-primaryOne"
@@ -110,20 +112,22 @@ const FormWrapper = () => {
                   icon="material-symbols:check-small-rounded"
                 />
               ) : (
-                <h1 className="text-lg text-white font-medium ">{item}</h1>
+                <h1 className="text-sm md:text-lg text-white font-medium ">
+                  {item}
+                </h1>
               )}
             </div>
           ))}
         </div>
       </div>
-      <div className="w-full flex justify-between px-[50px] !mt-3 items-center">
+      <div className="w-full flex justify-between md:px-[50px] !mt-3 items-center">
         {progressText.map((item, index) => (
           <h1
             className={` ${
               index === page || index < page
                 ? "text-primaryOne"
                 : "text-grayOne"
-            }  text-[13px] text-center`}
+            } text-[10px]  md:text-[13px] text-center`}
             key={index}
           >
             {item}
