@@ -13,9 +13,9 @@ export const Box: React.FC<Props> = ({ icon, name, value }) => {
   return (
     <div className="border rounded-[4px] w-full space-y-4 flex flex-col p-2 md:px-6 md:py-5 cursor-default ">
       <div className="p-1 w-fit bg-primaryOne/10">
-        <Icon icon={icon} className="!text-primaryOne  !text-2xl" />
+        <Icon icon={icon} className="!text-primaryOne !text-xl lg:!text-2xl" />
       </div>
-      <h3 className="text-sm">{name}</h3>
+      <h3 className="text-sm ">{name}</h3>
       <h1 className="text-base text-primaryOne font-bold !mt-3 ">{value}</h1>
     </div>
   );
@@ -26,7 +26,7 @@ const VendorHome = () => {
     <div className="w-full ">
       <DashHeader page="Home" />
       <div className="vendor_starter">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-y-0 gap-x-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-y-0 lg:gap-x-5">
           <Box
             icon="la:money-bill-alt-solid"
             name="Balance"

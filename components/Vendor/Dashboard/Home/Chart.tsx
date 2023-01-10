@@ -76,20 +76,20 @@ const data = [
 
 export default function Chart() {
   const [widths, setWidths] = React.useState({
-    fontSize: 10,
-    barWidth: 8,
+    fontSize: 9,
+    barWidth: 6,
   });
 
   React.useEffect(() => {
     if (screen.width >= 1280) {
       setWidths({
-        fontSize: 11,
-        barWidth: 11,
+        fontSize: 10,
+        barWidth: 8,
       });
     } else {
       setWidths({
-        fontSize: 10,
-        barWidth: 8,
+        fontSize: 9,
+        barWidth: 6,
       });
     }
   }, []);

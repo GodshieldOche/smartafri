@@ -4,6 +4,7 @@ import React from "react";
 import main from "../../public/white.png";
 import VendorAuthLayout from "./Auth";
 import DashLinks from "./Dashboard/DashLinks";
+import Footer from "./Dashboard/Footer";
 
 interface Props {
   children: React.ReactNode;
@@ -22,6 +23,7 @@ const VendorLayout: React.FC<Props> = ({ children }) => {
           <div className=" col-span-5 lg:col-span-4 w-full h-full relative max-h-screen scroller overflow-y-auto">
             {children}
           </div>
+          <Footer />
         </div>
       ) : (
         <VendorAuthLayout>{children}</VendorAuthLayout>
