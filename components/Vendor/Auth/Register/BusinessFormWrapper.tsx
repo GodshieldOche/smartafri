@@ -91,7 +91,7 @@ const BusinessFormWrapper = () => {
           {[1, 2, 3, 4].map((item, index) => (
             <div
               key={item}
-              className={`progress-step w-[32px] h-[32px] md:w-[48px] md:h-[48px] rounded-full flex justify-center items-center
+              className={`progress-step w-[40px] h-[40px] md:w-[48px] md:h-[48px] rounded-full flex justify-center items-center
               ${
                 index === page || index < page
                   ? "bg-primaryOne"

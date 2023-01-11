@@ -25,6 +25,8 @@ const VendorInput: React.FC<Props> = ({
   label,
   icon,
   type,
+  errors,
+  touched,
 }) => {
   const [inputType, setInputType] = useState<string>(type);
   const [active, setActive] = useState<boolean>(false);
@@ -40,8 +42,8 @@ const VendorInput: React.FC<Props> = ({
     <div className="space-y-2">
       <label htmlFor={name}>
         <h3
-          className={`${
-            active ? "text-primaryOne" : "text-grayFour"
+          className={`${active ? "text-primaryOne" : "text-grayFour"} ${
+            errors && touched ? "!text-secondaryOne" : ""
           } text-sm lg:text-base`}
         >
           {label}
@@ -49,7 +51,11 @@ const VendorInput: React.FC<Props> = ({
       </label>
       <div
         className={`flex relative border px-4  md:px-[18px] justify-center rounded-[5px]   items-center space-x-3 
-      ${active ? "!text-primaryOne !border-primaryOne/30" : "!text-grayOne"}`}
+      ${active ? "!text-primaryOne !border-primaryOne/30" : "!text-grayOne"}  ${
+          errors && touched
+            ? "!border-secondaryOne/50 !text-secondaryOne placeholder:!text-secondaryOne"
+            : ""
+        } `}
       >
         {icon && <Icon icon={icon} className="!text-xl " />}
         <Field
@@ -57,7 +63,9 @@ const VendorInput: React.FC<Props> = ({
           name={name}
           type={inputType}
           value={value}
-          className={`w-full text-sm autofill:!bg-white bg-white py-[15px] outline-none   `}
+          className={`w-full text-sm autofill:!bg-white bg-white py-[15px] outline-none ${
+            errors && touched ? " placeholder:!text-secondaryOne" : ""
+          }  `}
           onChange={handleChange}
           autoComplete="off"
           aria-autocomplete="none"
@@ -84,6 +92,11 @@ const VendorInput: React.FC<Props> = ({
           </div>
         )}
       </div>
+      <ErrorMessage
+        className="text-xs !mt-2 font-medium text-secondaryOne"
+        name={name}
+        component="div"
+      />
     </div>
   );
 };

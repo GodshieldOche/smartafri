@@ -64,6 +64,10 @@ const Otp: React.FC<Props> = ({ value, valueLength, onChange }) => {
 
       onChange(newValue);
 
+      if (targetValue !== " " && newValue.length === valueLength) {
+        target.blur();
+      }
+
       if (!isTargetValueDigit) {
         return;
       }

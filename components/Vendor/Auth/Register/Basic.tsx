@@ -76,10 +76,7 @@ const Basic: React.FC<RegisterProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={basicSchema}
-          onSubmit={(
-            { full_name, email, phone_number },
-            { resetForm, setSubmitting }
-          ) => {
+          onSubmit={({ full_name, email, phone_number }, { setSubmitting }) => {
             setData!(
               (prev) =>
                 (prev = {
@@ -90,6 +87,7 @@ const Basic: React.FC<RegisterProps> = ({
                 })
             );
 
+            setSubmitting(false);
             scrollToTop();
             setPage((prev) => prev + 1);
           }}
@@ -156,7 +154,12 @@ const Basic: React.FC<RegisterProps> = ({
                   width="w-full"
                   action={() => router.back()}
                 />
-                <Buttonv2 text="Next" width="w-full" action={handleSubmit} />
+                <Buttonv2
+                  text="Next"
+                  width="w-full"
+                  loading={isSubmitting}
+                  action={handleSubmit}
+                />
               </div>
             </Form>
           )}

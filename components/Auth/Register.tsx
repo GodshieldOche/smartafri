@@ -44,6 +44,25 @@ const Register = () => {
     router.push("/auth/signin");
   };
 
+  const handleRegister = (
+    data: registerValues,
+    setSubmitting: (isSubmitting: boolean) => void
+  ) => {
+    const body: any = { ...data };
+    delete body.confirmPassword;
+    dispatch(postRegister(body)).then((res: any) => {
+      if (res.error) {
+        toast.error("Email already Exist");
+        dispatch(reset());
+        return setSubmitting(false);
+      }
+      toast.success("Successful");
+      handleRouting();
+      dispatch(reset());
+      setSubmitting(false);
+    });
+  };
+
   return (
     <div className="flex flex-col w-full h-full space-y-10">
       <div className="w-full flex flex-col space-y-3 items-center">
@@ -55,20 +74,8 @@ const Register = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={registerSchema}
-        onSubmit={(data, { resetForm, setSubmitting }) => {
-          const body: any = { ...data };
-          delete body.confirmPassword;
-          dispatch(postRegister(body)).then((res: any) => {
-            if (res.error) {
-              toast.error("Email already Exist");
-              dispatch(reset());
-              return setSubmitting(false);
-            }
-            toast.success("Successful");
-            handleRouting();
-            dispatch(reset());
-            setSubmitting(false);
-          });
+        onSubmit={(data, { setSubmitting }) => {
+          handleRegister(data, setSubmitting);
         }}
       >
         {({

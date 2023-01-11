@@ -11,9 +11,12 @@ import TextAreaInput from "../../../Formik/TextAreaInput";
 import { contactSchema, contactValues } from "./Contact";
 import axios from "axios";
 import { useRouter } from "next/router";
+import useAppDispatch from "../../../../hooks/useDispatch";
+import { postVendorSignUp } from "../../../../redux/slice/vendor/vendorSignup";
+import { toast } from "react-toastify";
 
 const profileSchema = yup.object().shape({
-  other_docs: yup.string(),
+  other_docs: yup.string().required("This field is required."),
   description: yup.string().required("This field is required."),
   account_number: yup.string().required("This field is required."),
 });
@@ -60,10 +63,23 @@ const Profile: React.FC<RegisterProps> = ({
   };
 
   const router = useRouter();
+  const dispatch = useAppDispatch();
 
   const handlePrev = () => {
     scrollToTop();
     setPage((prev) => prev - 1);
+  };
+
+  const handleRegister = (setSubmitting: (isSubmitting: boolean) => void) => {
+    dispatch(postVendorSignUp(data)).then((res: any) => {
+      if (res.error) {
+        toast.error("Email already Exist");
+        return setSubmitting(false);
+      }
+      toast.success("Successful");
+      router.push("/vendor/auth/register/otp");
+      setSubmitting(false);
+    });
   };
 
   return (
@@ -72,27 +88,9 @@ const Profile: React.FC<RegisterProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={profileSchema}
-          onSubmit={async (
-            { account_number },
-            { resetForm, setSubmitting }
-          ) => {
+          onSubmit={(_, { setSubmitting }) => {
             console.log("Working");
-            try {
-              const res = await axios.post(
-                "https://apis.smartafri.com/api/vendor/auth/register",
-                data,
-                {
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                }
-              );
-
-              console.log(res);
-            } catch (error) {
-              console.log(error);
-            }
-            router.push("/vendor/auth/register/otp");
+            handleRegister(setSubmitting);
           }}
         >
           {({
@@ -170,6 +168,7 @@ const Profile: React.FC<RegisterProps> = ({
                     handleChange={handleChange}
                     placeholder="Account Number"
                     type="text"
+                    handleBlur={handleBlur}
                     errors={errors.account_number}
                     touched={touched.account_number}
                   />
@@ -182,7 +181,12 @@ const Profile: React.FC<RegisterProps> = ({
                   width="w-full"
                   action={handlePrev}
                 />
-                <Buttonv2 text="Next" width="w-full" action={handleSubmit} />
+                <Buttonv2
+                  text="Next"
+                  width="w-full"
+                  loading={isSubmitting}
+                  action={handleSubmit}
+                />
               </div>
             </Form>
           )}

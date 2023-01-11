@@ -7,6 +7,7 @@ import registerReducer from "./slice/auth/register";
 import signinReducer from "./slice/auth/signin";
 import sessionReducer from "./slice/auth/session";
 import vendorSignInReducer from "./slice/vendor/vendorSignin";
+import vendorSignupReducer from "./slice/vendor/vendorSignup";
 import productsReducer from "./slice/web/products";
 import productReducer from "./slice/web/product";
 import payReducer from "./slice/user/pay";
@@ -23,6 +24,7 @@ const makeStore = () =>
       signin: signinReducer,
       session: sessionReducer,
       vendorSignIn: vendorSignInReducer,
+      vendorSignup: vendorSignupReducer,
       pay: payReducer,
     },
   });

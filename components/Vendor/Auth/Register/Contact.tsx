@@ -11,8 +11,8 @@ import { basicSchema, basicValues } from "./Basic";
 
 export const contactSchema = yup.object().shape({
   logo: yup.string().required("This field is required."),
-  country: yup.string().required("This field is required."),
-  state: yup.string().required("This field is required."),
+  country: yup.string(),
+  state: yup.string(),
   address: yup.string().required("This field is required."),
   password: yup.string().required("This field is required."),
   confirmPassword: yup
@@ -71,7 +71,12 @@ const Contact: React.FC<RegisterProps> = ({
         <Formik
           initialValues={initialValues}
           validationSchema={contactSchema}
-          onSubmit={(data, { resetForm, setSubmitting }) => {}}
+          onSubmit={(data, { setSubmitting }) => {
+            console.log(data);
+            scrollToTop();
+            setPage((prev) => prev + 1);
+            setSubmitting(false);
+          }}
         >
           {({
             errors,
@@ -85,7 +90,7 @@ const Contact: React.FC<RegisterProps> = ({
             <Form autoComplete="off" className="space-y-8">
               <FileInput
                 label="Logo"
-                name="means_of_id"
+                name="logo"
                 value={values.logo}
                 handleChange={handleChange}
                 handleBlur={handleBlur}
@@ -157,7 +162,12 @@ const Contact: React.FC<RegisterProps> = ({
                   width="w-full"
                   action={handlePrev}
                 />
-                <Buttonv2 text="Next" width="w-full" action={handleNext} />
+                <Buttonv2
+                  text="Next"
+                  width="w-full"
+                  loading={isSubmitting}
+                  action={handleSubmit}
+                />
               </div>
             </Form>
           )}

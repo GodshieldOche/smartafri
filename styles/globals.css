@@ -91,15 +91,20 @@
   position: absolute;
   background-color: #4082e6;
   border-radius: 3px;
-  padding: 6px 24px;
+  padding: 6px 18px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   color: white;
-  top: 20%;
+  top: 18%;
 }
+
+.custom-file-input::focus {
+  background-color: red;
+}
+
 .custom-file-input:hover::before {
   border-color: black;
 }
@@ -118,6 +123,10 @@ select {
 input[type="checkbox"] {
   transform: scale(1.1);
   background-color: #4082e6;
+}
+
+input[type="file"]::placeholder {
+  color: red;
 }
 
 ::-moz-selection {
