@@ -13,3 +13,5 @@ export const clearToken = async (appContext: any) => {
 
   appContext?.ctx?.res?.setHeader("Set-Cookie", serialised);
 };
+
+export const RE_DIGIT = new RegExp(/^\d+$/);

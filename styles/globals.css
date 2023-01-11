@@ -119,3 +119,12 @@ input[type="checkbox"] {
   transform: scale(1.1);
   background-color: #4082e6;
 }
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #4082e6;
+}
+
+::selection {
+  background: #4082e6;
+}

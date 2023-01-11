@@ -10,6 +10,7 @@ import { RegisterProps } from "../../../../interface";
 import TextAreaInput from "../../../Formik/TextAreaInput";
 import { contactSchema, contactValues } from "./Contact";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 const profileSchema = yup.object().shape({
   other_docs: yup.string(),
@@ -58,6 +59,8 @@ const Profile: React.FC<RegisterProps> = ({
     setPage((prev) => prev + 1);
   };
 
+  const router = useRouter();
+
   const handlePrev = () => {
     scrollToTop();
     setPage((prev) => prev - 1);
@@ -89,6 +92,7 @@ const Profile: React.FC<RegisterProps> = ({
             } catch (error) {
               console.log(error);
             }
+            router.push("/vendor/auth/register/otp");
           }}
         >
           {({

@@ -15,7 +15,7 @@ const Buttonv2: React.FC<Props> = ({ text, width, color, action, loading }) => {
       onClick={action}
       className={` lg:px-12 ${
         width ? width : "w-full lg:w-fit"
-      } border-2 border-primaryOne py-2  md:py-[10px] ${
+      } border-2 border-primaryOne py-3  md:py-[13px] ${
         color ? color : "bg-primaryOne"
       }  text-white text-base  whitespace-nowrap rounded-[7px]`}
       type="button"

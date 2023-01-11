@@ -8,6 +8,7 @@ import DropdownInput from "../../../Formik/DropdownInput";
 import OutlineBtn from "../../../Common/OutlineBtn";
 import { RegisterProps } from "../../../../interface";
 import TextAreaInput from "../../../Formik/TextAreaInput";
+import { useRouter } from "next/router";
 
 const profileSchema = yup.object().shape({
   other_docs: yup.string(),
@@ -37,9 +38,11 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
     account_number: "",
   };
 
+  const router = useRouter();
+
   const handleNext = () => {
     scrollToTop();
-    setPage((prev) => prev + 1);
+    router.push("/vendor/auth/register/otp");
   };
 
   const handlePrev = () => {
