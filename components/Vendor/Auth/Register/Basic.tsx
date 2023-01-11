@@ -148,7 +148,7 @@ const Basic: React.FC<RegisterProps> = ({
                 touched={touched.means_of_id}
                 des="Drivers License, Intl Passport, NIN"
               />
-              <div className="w-full  !mt-12 lg:!mt-16 flex justify-between items-center  space-x-4 md:space-x-6">
+              <div className="w-full  !mt-12 lg:!mt-16 flex justify-between items-center  space-x-[15px] md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"
@@ -195,7 +195,7 @@ const Basic: React.FC<RegisterProps> = ({
                 touched={touched.company_name}
               />
 
-              <div className="w-full h-fit grid grid-cols-2 gap-x-6 ">
+              <div className="w-full h-fit grid grid-cols-2 gap-x-[15px] md:gap-x-6 ">
                 <DropdownInput
                   label="Registered Business"
                   name="is_business_registered"
@@ -240,7 +240,7 @@ const Basic: React.FC<RegisterProps> = ({
                 errors={errors.business_role}
                 touched={touched.business_role}
               />
-              <div className="w-full !mt-12 lg:!mt-16 flex justify-between items-center space-x-4 md:space-x-6">
+              <div className="w-full !mt-12 lg:!mt-16 flex justify-between items-center space-x-[15px] md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"

@@ -97,7 +97,7 @@ const Contact: React.FC<RegisterProps> = ({
                 errors={errors.logo}
                 touched={touched.logo}
               />
-              <div className="w-full h-fit grid grid-cols-2 gap-x-6 ">
+              <div className="w-full h-fit grid grid-cols-2 gap-x-[15px] md:gap-x-6 ">
                 <DropdownInput
                   label="Country"
                   name="country"
@@ -156,7 +156,7 @@ const Contact: React.FC<RegisterProps> = ({
                 touched={touched.confirmPassword}
               />
 
-              <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+              <div className="w-full !mt-16 flex justify-between items-center space-x-[15px] md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"
@@ -236,7 +236,7 @@ const Contact: React.FC<RegisterProps> = ({
                 touched={touched.means_of_id}
                 des="Drivers License, Intl Passport, NIN"
               />
-              <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+              <div className="w-full !mt-16 flex justify-between items-center space-x-[15px] md:space-x-6">
                 <OutlineBtn
                   text="Previous"
                   width="w-full"

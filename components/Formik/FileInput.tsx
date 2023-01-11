@@ -50,7 +50,7 @@ const FileInput: React.FC<Props> = ({
           value={value}
           aria-autocomplete="none"
           className={
-            "w-full py-[12.5px] text-xs  md:text-sm relative custom-file-input outline-none "
+            "w-full py-[14px] text-xs  md:text-sm relative custom-file-input outline-none "
           }
           onChange={handleChange}
           autoComplete="off"

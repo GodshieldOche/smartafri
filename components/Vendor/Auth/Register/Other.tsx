@@ -77,7 +77,7 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
               touched={touched.other_docs}
               des="You can Upload more documents"
             />
-            <div className="w-full h-fit grid grid-cols-2 gap-x-6 ">
+            <div className="w-full h-fit grid grid-cols-2 gap-x-[15px] md:gap-x-6 ">
               <DropdownInput
                 label="Niche"
                 name="niche"
@@ -115,7 +115,7 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
               <h3 className="text-grayOne text-xs sm:text-sm tracking-[0.02em] !mt-3  ">
                 All sales payments will be sent to this account details
               </h3>
-              <div className="w-full h-fit grid grid-cols-2 gap-x-6 ">
+              <div className="w-full h-fit grid grid-cols-2 gap-x-[15px] md:gap-x-6 ">
                 <DropdownInput
                   label="Bank Name"
                   name="bank_name"
@@ -138,7 +138,7 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
               </div>
             </div>
 
-            <div className="w-full !mt-16 flex justify-between items-center space-x-6">
+            <div className="w-full !mt-16 flex justify-between items-center space-x-[15px] md:space-x-6">
               <OutlineBtn text="Previous" width="w-full" action={handlePrev} />
               <Buttonv2 text="Next" width="w-full" action={handleNext} />
             </div>
