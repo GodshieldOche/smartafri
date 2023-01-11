@@ -25,7 +25,7 @@ const TextAreaInput: React.FC<Props> = ({
   return (
     <div className="space-y-2">
       <label htmlFor={name}>
-        <h3 className={`text-sm lg:text-base text-grayOne`}>{label}</h3>
+        <h3 className={`text-sm lg:text-base text-grayFour`}>{label}</h3>
       </label>
       <div className="flex relative border pl-[18px] justify-center rounded-[5px]  items-center space-x-3">
         <Field

@@ -66,7 +66,7 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
           handleBlur,
           isSubmitting,
         }) => (
-          <Form autoComplete="off" className="space-y-6">
+          <Form autoComplete="off" className="space-y-8">
             <FileInput
               label="Other Docs (Optional)"
               name="other_docs"
@@ -108,11 +108,11 @@ const Other: React.FC<RegisterProps> = ({ scrollToTop, setPage }) => {
               touched={touched.description}
             />
 
-            <div className="w-full !mt-8 space-y-6">
-              <h1 className="font-semibold text-lg text-primaryOne ">
+            <div className="w-full !mt-6 lg:!mt-8 space-y-6">
+              <h1 className="font-semibold text-base  lg:text-lg text-primaryOne ">
                 Payout Information
               </h1>
-              <h3 className="text-grayOne text-base tracking-[0.02em] !mt-1 ">
+              <h3 className="text-grayOne text-xs sm:text-sm tracking-[0.02em] !mt-3  ">
                 All sales payments will be sent to this account details
               </h3>
               <div className="w-full h-fit grid grid-cols-2 gap-x-6 ">

@@ -40,7 +40,7 @@ const DropdownInput: React.FC<Props> = ({
       <label htmlFor={name} className=" ">
         <h3
           className={`${
-            active ? "text-primaryOne" : "text-grayOne"
+            active ? "text-primaryOne" : "text-grayFour"
           } text-sm lg:text-base `}
         >
           {label}

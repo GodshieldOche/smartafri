@@ -103,7 +103,7 @@ const Basic: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <VendorInput
                 label="Full Name"
                 name="full_name"
@@ -178,7 +178,7 @@ const Basic: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <VendorInput
                 label="Comapany Name"
                 name="company_name"

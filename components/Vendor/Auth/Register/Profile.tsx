@@ -104,7 +104,7 @@ const Profile: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <FileInput
                 label="Other Docs (Optional)"
                 name="other_docs"
@@ -204,7 +204,7 @@ const Profile: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <FileInput
                 label="Logo"
                 name="means_of_id"

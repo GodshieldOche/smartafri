@@ -9,20 +9,12 @@ const VerifyOtp = () => {
   const router = useRouter();
   return (
     <div className="pb-16 !mt-3 lg:!mt-[48px] flex-col space-y-12 lg:space-y-16">
-      <div className="flex  lg:hidden flex-col justify-center items-center space-y-2 ">
+      <Otp value={otp} valueLength={6} onChange={onChange} />
+      <div className="flex flex-col justify-center items-center space-y-2 ">
         <h1 className="text-center font-semibold text-lg md:text-xl text-primaryOne ">
           Enter OTP
         </h1>
-        <p className=" text-sm lg:text-base tracking-wide text-center text-black leading-6  ">
-          Please enter the five digit token code that was sent to your mail
-        </p>
-      </div>
-      <Otp value={otp} valueLength={6} onChange={onChange} />
-      <div className="hidden  lg:flex flex-col justify-center items-center space-y-4 ">
-        <h1 className="text-center font-semibold text-xl text-primaryOne ">
-          Enter OTP
-        </h1>
-        <p className="text-base tracking-wide text-center text-black leading-8  ">
+        <p className=" text-sm lg:text-base tracking-wide text-center text-black leading-6 lg:leading-8  ">
           Please enter the five digit token code that was sent to your mail
         </p>
       </div>

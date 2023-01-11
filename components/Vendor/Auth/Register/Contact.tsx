@@ -82,7 +82,7 @@ const Contact: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <FileInput
                 label="Logo"
                 name="means_of_id"
@@ -179,7 +179,7 @@ const Contact: React.FC<RegisterProps> = ({
             handleBlur,
             isSubmitting,
           }) => (
-            <Form autoComplete="off" className="space-y-6">
+            <Form autoComplete="off" className="space-y-8">
               <VendorInput
                 label="Full Name"
                 name="full_name"
